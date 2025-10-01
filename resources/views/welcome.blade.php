@@ -36,12 +36,7 @@
         linear-gradient(140deg, var(--bg1), var(--bg2));
     }
 
-    .container{
-      min-height:100%;
-      display:grid;
-      place-items:center;
-      padding:40px 20px;
-    }
+    .container{ min-height:100%; display:grid; place-items:center; padding:40px 20px; }
 
     .card{
       width:min(920px, 100%);
@@ -60,33 +55,15 @@
         radial-gradient(400px 120px at 80% 0%, rgba(99,102,241,.25), transparent 60%);
       border-bottom:1px solid rgba(255,255,255,.1);
     }
-    .title{
-      margin:0 0 6px;
-      font-weight:900;
-      font-size:28px;
-      letter-spacing:.3px;
-    }
-    .subtitle{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-    }
+    .title{ margin:0 0 6px; font-weight:900; font-size:28px; letter-spacing:.3px; }
+    .subtitle{ margin:0; color:var(--muted); font-size:14px; }
 
     .card-body{ padding:24px; }
 
-    .grid{
-      display:grid;
-      gap:16px;
-      grid-template-columns:1fr 1fr;
-    }
+    .grid{ display:grid; gap:16px; grid-template-columns:1fr 1fr; }
     .grid.full{ grid-template-columns:1fr; }
 
-    label{
-      display:block;
-      font-weight:700;
-      margin:0 0 6px;
-      color:#f3f4f6;
-    }
+    label{ display:block; font-weight:700; margin:0 0 6px; color:#f3f4f6; }
     .muted{ color:var(--muted); font-weight:600; }
     .help{ color:var(--muted); font-size:12px; margin-top:6px; }
 
@@ -109,57 +86,33 @@
     }
 
     .row{ display:flex; gap:10px; align-items:center; }
-    .thumb{
-      width:40px;height:40px;border-radius:10px;object-fit:cover;
-      border:1px solid rgba(148,163,184,.35);
-    }
+    .thumb{ width:40px;height:40px;border-radius:10px;object-fit:cover; border:1px solid rgba(148,163,184,.35); }
 
-    .note{
-      font-size:13px;
-      color:#dbeafe;
-      background:linear-gradient(180deg, rgba(99,102,241,.25), rgba(99,102,241,.15));
-      border:1px solid rgba(99,102,241,.35);
-      padding:10px 12px;
-      border-radius:12px;
-      margin-top:8px;
-    }
+    .note{ font-size:13px; color:#dbeafe; background:linear-gradient(180deg, rgba(99,102,241,.25), rgba(99,102,241,.15)); border:1px solid rgba(99,102,241,.35); padding:10px 12px; border-radius:12px; margin-top:8px; }
 
-    .actions{
-      display:flex;
-      gap:12px;
-      margin-top:18px;
-    }
-    button{
-      appearance:none;border:none;cursor:pointer;
-      padding:12px 18px;border-radius:12px;font-weight:800;font-size:15px;
-      transition:.2s transform,.2s box-shadow,.2s background-color;
-      box-shadow:0 10px 30px rgba(34,211,238,.25);
-    }
-    .btn-primary{
-      background:linear-gradient(135deg, #22d3ee, #60a5fa);
-      color:#0b1220;
-    }
+    .actions{ display:flex; gap:12px; margin-top:18px; }
+    button{ appearance:none;border:none;cursor:pointer; padding:12px 18px;border-radius:12px;font-weight:800;font-size:15px; transition:.2s transform,.2s box-shadow,.2s background-color; box-shadow:0 10px 30px rgba(34,211,238,.25); }
+    .btn-primary{ background:linear-gradient(135deg, #22d3ee, #60a5fa); color:#0b1220; }
     .btn-primary:hover{ transform: translateY(-2px); }
-    .btn-secondary{
-      background:transparent;color:#e5e7eb;border:1px solid rgba(255,255,255,.25);
-      box-shadow:none;
-    }
+    .btn-secondary{ background:transparent;color:#e5e7eb;border:1px solid rgba(255,255,255,.25); box-shadow:none; }
     .btn-secondary:hover{ background:rgba(255,255,255,.06); transform: translateY(-2px); }
 
-    .section{
-      margin:8px 0 0;
-      padding:18px 18px 2px;
-      border:1px dashed rgba(255,255,255,.13);
-      border-radius:14px;
-      background:linear-gradient(180deg, rgba(255,255,255,.03), transparent);
-    }
+    .section{ margin:8px 0 0; padding:18px 18px 2px; border:1px dashed rgba(255,255,255,.13); border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.03), transparent); }
 
-    @media (max-width:900px){
-      .grid{ grid-template-columns:1fr; }
-      .card-body{ padding:18px; }
-      .card-header{ padding:22px 18px 14px; }
-      .title{ font-size:24px; }
-    }
+    /* Size chart table */
+    table{ width:100%; border-collapse:collapse; font-size:14px; }
+    th, td{ border:1px solid rgba(148,163,184,.25); padding:8px; text-align:center; }
+    th{ background:rgba(255,255,255,.06); }
+
+    dialog{ border:none; border-radius:16px; padding:0; overflow:hidden; box-shadow:var(--shadow); }
+    dialog::backdrop{ background:rgba(0,0,0,.5); }
+    .modal{ background:#0b1220; color:#e5e7eb; }
+    .modal header{ padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.12); font-weight:800; }
+    .modal .content{ padding:18px; }
+    .modal .footer{ display:flex; justify-content:flex-end; padding:12px 18px; border-top:1px solid rgba(255,255,255,.12); }
+    .link{ color:#7dd3fc; text-decoration:underline; cursor:pointer; }
+
+    @media (max-width:900px){ .grid{ grid-template-columns:1fr; } .card-body{ padding:18px; } .card-header{ padding:22px 18px 14px; } .title{ font-size:24px; } }
   </style>
 </head>
 <body>
@@ -172,6 +125,25 @@
 
       <div class="card-body">
         <form id="regForm" autocomplete="off" enctype="multipart/form-data">
+
+          <!-- Fee & Payment instructions (TOP TEXT BOX) -->
+          <div class="section">
+            <div class="grid full">
+              <div>
+                <label for="fee_text">Fee Structure & Payment Instructions</label>
+                <textarea id="fee_text" name="fee_text" rows="5" placeholder="Write fee details and payment instructions here...">• Alumni registration fee: ______ BDT
+• Each guest aged 12 or over: 1000 BDT
+• Children under 12: Free
+
+Payment:
+• bKash/Nagad: ____________ (Merchant/Personal)
+• Reference: Your Name + Phone
+• After payment, include Txn ID in the notes (optional).</textarea>
+                <div class="help">This text box is editable—update the exact fees and channels before publishing.</div>
+              </div>
+            </div>
+          </div>
+
           <!-- Basic info -->
           <div class="section">
             <div class="grid full">
@@ -181,13 +153,22 @@
               </div>
             </div>
 
-            <div class="grid full">
+            <!-- Side-by-side SSC + HSC dropdowns -->
+            <div class="grid">
               <div>
-                <label for="batch">SSC or HSC Batch <span class="muted">(required)</span></label>
-                <input type="text" id="batch" name="batch" required placeholder="e.g., SSC – 1985, HSC – 1990" />
-                <div class="help">If you completed both at EUSC, please mention both.</div>
+                <label for="ssc_year">SSC Year <span class="muted">(1985–2025)</span></label>
+                <select id="ssc_year" name="ssc_year">
+                  <option value="">-- Select --</option>
+                </select>
+              </div>
+              <div>
+                <label for="hsc_year">HSC Year <span class="muted">(1998–2025)</span></label>
+                <select id="hsc_year" name="hsc_year">
+                  <option value="">-- Select --</option>
+                </select>
               </div>
             </div>
+            <div class="help">Select your SSC and/or HSC year. If only one applies, leave the other blank.</div>
 
             <div class="grid">
               <div>
@@ -214,24 +195,41 @@
                 <input type="text" id="profession" name="profession" placeholder="e.g., Doctor – Square Hospital, Engineer – Google" />
               </div>
             </div>
-          </div>
 
-          <!-- Attendance & preferences -->
+            <!-- Currency helper (appears if location is outside Bangladesh) -->
+            <div class="grid full" id="currencyHelper" style="display:none;">
+              <div>
+                <label class="row" style="justify-content:space-between; gap:10px; align-items:baseline;">
+                  <span>USD ⇄ BDT Helper</span>
+                  <span class="muted" style="font-weight:500; font-size:12px;">Edit the rate to match today's market</span>
+                </label>
+                <div class="row" style="gap:12px; flex-wrap:wrap;">
+                  <div style="flex:1 1 160px; min-width:160px;">
+                    <label for="fx_rate" class="muted" style="margin:0 0 4px;">Rate (1 USD ≈ BDT)</label>
+                    <input type="number" id="fx_rate" name="fx_rate" min="1" step="0.01" value="120" inputmode="decimal" />
+                  </div>
+                  <div style="flex:1 1 160px; min-width:160px;">
+                    <label for="usd_amount" class="muted" style="margin:0 0 4px;">USD</label>
+                    <input type="number" id="usd_amount" name="usd_amount" min="0" step="0.01" placeholder="e.g., 50" inputmode="decimal" />
+                  </div>
+                  <div style="flex:1 1 160px; min-width:160px;">
+                    <label for="bdt_amount" class="muted" style="margin:0 0 4px;">BDT (calculated)</label>
+                    <input type="number" id="bdt_amount" name="bdt_amount" step="0.01" placeholder="—" inputmode="decimal" readonly />
+                  </div>
+                </div>
+                <div class="help">This is an on-page helper only (no data is submitted). It shows up when the location seems outside Bangladesh.</div>
+              </div>
+            </div>
+
+            <!-- Attendance & preferences -->
           <div class="section">
             <div class="grid">
               <div>
                 <label for="guests_total">Number of Guests / Family Members Attending</label>
-                <select id="guests_total" name="guests_total">
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5+</option>
-                </select>
-                <div class="note">An additional 1000 BDT will be charged for each guest aged 12 or over.</div>
+                <input type="number" id="guests_total" name="guests_total" min="0" value="0" inputmode="numeric" />
               </div>
               <div>
+                 <div class="note">An additional 1000 BDT will be charged for each guest aged 12 or over.</div>
                 <label for="guest_above_12">Guests aged 12+ <span class="muted">(required)</span></label>
                 <input type="number" id="guest_above_12" name="guest_above_12" min="0" value="0" required inputmode="numeric" />
               </div>
@@ -248,13 +246,21 @@
                   <option value="XL">XL</option>
                   <option value="XXL">XXL</option>
                 </select>
-                <div class="help">Please refer to the size chart before selecting.</div>
+                <div class="help">Please check the <span id="openSizeChart" class="link">size chart</span> before selecting.</div>
               </div>
 
+              <!-- Contribution to EUSCAA: Yes/No + conditional amount -->
               <div>
-                <label for="donation_bdt">💙 Contribution to EUSCAA (BDT)</label>
-                <input type="number" id="donation_bdt" name="donation_bdt" min="0" step="100" placeholder="e.g., 1000" />
-                <div class="help">Any amount—small or large—helps support alumni & student welfare.</div>
+                <label>Do you want to donate for EUSCAA?</label>
+                <div class="row" role="radiogroup" aria-label="Donate to EUSCAA?">
+                  <label class="row" style="gap:6px"><input type="radio" name="donate_euscaa" value="yes"> Yes</label>
+                  <label class="row" style="gap:6px"><input type="radio" name="donate_euscaa" value="no" checked> No</label>
+                </div>
+                <div id="donationAmountWrap" style="margin-top:8px; display:none;">
+                  <label for="donation_bdt" class="muted" style="margin:0 0 4px;">Contribution Amount (BDT)</label>
+                  <input type="number" id="donation_bdt" name="donation_bdt" min="0" step="100" placeholder="e.g., 1000" />
+                  <div class="help">Any amount—small or large—helps support alumni & student welfare.</div>
+                </div>
               </div>
             </div>
 
@@ -276,10 +282,38 @@
             <button type="reset" class="btn-secondary" id="resetBtn">Reset</button>
             <span id="saving" class="muted" style="align-self:center; display:none;">Saving…</span>
           </div>
+
+          <!-- Hidden composed field to preserve existing backend 'batch' expectation -->
+          <input type="hidden" id="batch" name="batch" />
         </form>
       </div>
     </div>
   </div>
+
+  <!-- Size Chart Modal -->
+  <dialog id="sizeChart">
+    <div class="modal">
+      <header>Unisex T‑Shirt Size Chart (inches)</header>
+      <div class="content">
+        <table>
+          <thead>
+            <tr><th>Size</th><th>Chest</th><th>Length</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>34–36</td><td>27</td></tr>
+            <tr><td>M</td><td>38–40</td><td>28</td></tr>
+            <tr><td>L</td><td>42–44</td><td>29</td></tr>
+            <tr><td>XL</td><td>46–48</td><td>30</td></tr>
+            <tr><td>XXL</td><td>50–52</td><td>31</td></tr>
+          </tbody>
+        </table>
+        <div class="help" style="margin-top:8px">Tip: Measure around the fullest part of the chest. If in between sizes, choose the larger size.</div>
+      </div>
+      <div class="footer">
+        <button id="closeSizeChart" class="btn-secondary" style="box-shadow:none">Close</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -288,34 +322,82 @@
 
   <script>
     // Toastr config
-    toastr.options = {
-      closeButton: true,
-      progressBar: true,
-      newestOnTop: true,
-      positionClass: "toast-top-right",
-      timeOut: 3000
-    };
+    toastr.options = { closeButton: true, progressBar: true, newestOnTop: true, positionClass: "toast-top-right", timeOut: 3000 };
 
     // CSRF for AJAX
-    $.ajaxSetup({
-      headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') }
-    });
+    $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') } });
 
     // Elements
     const form = $('#regForm');
-    const submitBtn = $('#submitBtn');      // jQuery
-    const saving = $('#saving');            // jQuery
+    const submitBtn = $('#submitBtn');
+    const saving = $('#saving');
     const photoEl = document.getElementById('photo');
     const photoPreview = document.getElementById('photoPreview');
 
-    // Photo validation + preview
+    // Year dropdowns
+    function fillYearRange(selectId, start, end){
+      const sel = document.getElementById(selectId);
+      for(let y=end; y>=start; y--){
+        const opt = document.createElement('option');
+        opt.value = String(y);
+        opt.textContent = String(y);
+        sel.appendChild(opt);
+      }
+    }
+    fillYearRange('ssc_year', 1985, 2025);
+    fillYearRange('hsc_year', 1998, 2025);
+
+    // Size chart modal
+    const dlg = document.getElementById('sizeChart');
+    document.getElementById('openSizeChart').addEventListener('click', ()=> dlg.showModal());
+    document.getElementById('closeSizeChart').addEventListener('click', ()=> dlg.close());
+
+    // Donate toggle
+    const donationWrap = document.getElementById('donationAmountWrap');
+    document.querySelectorAll('input[name="donate_euscaa"]').forEach(r => {
+      r.addEventListener('change', () => {
+        const yes = document.querySelector('input[name="donate_euscaa"][value="yes"]').checked;
+        donationWrap.style.display = yes ? 'block' : 'none';
+        if(!yes){ document.getElementById('donation_bdt').value = ''; }
+      });
+    });
+
+    // Currency helper logic
+    const currencyHelper = document.getElementById('currencyHelper');
+    const locationInput = document.getElementById('location');
+    const fxRate = document.getElementById('fx_rate');
+    const usdAmount = document.getElementById('usd_amount');
+    const bdtAmount = document.getElementById('bdt_amount');
+
+    function seemsInBangladesh(text){
+      if(!text) return true;
+      const t = text.toLowerCase();
+      return t.includes('bangladesh') || t.includes('bd') || t.includes('dhaka');
+    }
+
+    function toggleCurrencyHelper(){
+      const show = !seemsInBangladesh(locationInput.value.trim());
+      if(currencyHelper){ currencyHelper.style.display = show ? 'block' : 'none'; }
+    }
+
+    function recomputeBDT(){
+      const rate = parseFloat(fxRate?.value || '0');
+      const usd = parseFloat(usdAmount?.value || '0');
+      if(!isFinite(rate) || !isFinite(usd)) { if(bdtAmount) bdtAmount.value = ''; return; }
+      if(bdtAmount) bdtAmount.value = (rate * usd).toFixed(2);
+    }
+
+    locationInput?.addEventListener('input', toggleCurrencyHelper);
+    fxRate?.addEventListener('input', recomputeBDT);
+    usdAmount?.addEventListener('input', recomputeBDT);
+
+    // Initialize helper visibility on load
+    toggleCurrencyHelper();
+
+
     photoEl?.addEventListener('change', function(){
       const file = this.files && this.files[0];
-      if(!file){
-        photoPreview.style.display = 'none';
-        photoPreview.src = '';
-        return;
-      }
+      if(!file){ photoPreview.style.display = 'none'; photoPreview.src = ''; return; }
       const okTypes = ['image/jpeg','image/png'];
       const maxBytes = 20 * 1024 * 1024; // 20MB
       if(!okTypes.includes(file.type)){
@@ -335,18 +417,29 @@
       photoPreview.style.display = 'inline-block';
     });
 
-    // Guests cross-check
+    // Guests cross-check (now with numeric input)
     function validateGuests(){
-      const totalVal = $('#guests_total').val();        // '0'..'5'
+      const total = parseInt($('#guests_total').val() || '0', 10);
       const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
-      if(totalVal !== '5'){
-        const total = parseInt(totalVal || '0', 10);
-        if(guests12 > total){
-          toastr.error('Guests aged 12+ cannot exceed total guests.');
-          return false;
-        }
+      if(guests12 > total){
+        toastr.error('Guests aged 12+ cannot exceed total guests.');
+        return false;
+      }
+      if(total < 0 || guests12 < 0){
+        toastr.error('Guest numbers cannot be negative.');
+        return false;
       }
       return true;
+    }
+
+    // Compose legacy 'batch' string from SSC/HSC for backend compatibility
+    function composeBatch(){
+      const ssc = $('#ssc_year').val();
+      const hsc = $('#hsc_year').val();
+      let parts = [];
+      if(ssc) parts.push(`SSC – ${ssc}`);
+      if(hsc) parts.push(`HSC – ${hsc}`);
+      return parts.join(', ');
     }
 
     // Submit handler (uses FormData for file upload)
@@ -354,24 +447,37 @@
       e.preventDefault();
       if(!validateGuests()) return;
 
+      // ensure batch string
+      $('#batch').val(composeBatch());
+
       const originalBtnText = submitBtn.text();
       submitBtn.prop('disabled', true).text('Submitting…');
-      saving.show(); // show "Saving…"
+      saving.show();
 
       const fd = new FormData();
       fd.append('name', $('#name').val().trim());
       fd.append('email', $('#email').val().trim());
       fd.append('phone', $('#phone').val().trim());
-      fd.append('batch', $('#batch').val().trim());
+      fd.append('batch', $('#batch').val()); // composed string
+      fd.append('ssc_year', $('#ssc_year').val());
+      fd.append('hsc_year', $('#hsc_year').val());
       fd.append('location', $('#location').val().trim());
       fd.append('profession', $('#profession').val().trim());
-      fd.append('guests_total', $('#guests_total').val()); // '0'..'5'
+      fd.append('guests_total', $('#guests_total').val());
       fd.append('guest_above_12', $('#guest_above_12').val());
       fd.append('tshirt_size', $('#tshirt_size').val());
-      fd.append('donation_bdt', $('#donation_bdt').val());
-      if(photoEl && photoEl.files && photoEl.files[0]){
-        fd.append('photo', photoEl.files[0]);
+
+      const donateChoice = document.querySelector('input[name="donate_euscaa"]:checked')?.value || 'no';
+      fd.append('donate_euscaa', donateChoice); // yes/no
+      if(donateChoice === 'yes'){
+        fd.append('donation_bdt', $('#donation_bdt').val());
+      } else {
+        fd.append('donation_bdt', '');
       }
+
+      fd.append('fee_text', $('#fee_text').val());
+
+      if(photoEl && photoEl.files && photoEl.files[0]){ fd.append('photo', photoEl.files[0]); }
 
       $.ajax({
         url: "{{ route('registrations.store') }}",
@@ -386,6 +492,7 @@
           form.trigger('reset');
           photoPreview.style.display = 'none';
           photoPreview.src = '';
+          donationWrap.style.display = 'none';
         } else if(resp && resp.message){
           toastr.info(resp.message);
         } else {
@@ -395,9 +502,7 @@
       .fail(function(xhr){
         if(xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors){
           const errors = xhr.responseJSON.errors;
-          Object.keys(errors).forEach(function(key){
-            toastr.error(errors[key][0]);
-          });
+          Object.keys(errors).forEach(function(key){ toastr.error(errors[key][0]); });
         } else if (xhr.status === 419) {
           toastr.error('Session expired (419). Please refresh the page and try again.');
         } else {
@@ -406,14 +511,16 @@
       })
       .always(function(){
         submitBtn.prop('disabled', false).text(originalBtnText);
-        saving.hide(); // hide "Saving…"
+        saving.hide();
       });
     });
 
-    // Reset Preview
+    // Reset Preview + donation toggle
     document.getElementById('resetBtn')?.addEventListener('click', () => {
       photoPreview.style.display = 'none';
       photoPreview.src = '';
+      donationWrap.style.display = 'none';
+      document.querySelector('input[name="donate_euscaa"][value="no"]').checked = true;
     });
   </script>
 </body>
