@@ -11,17 +11,27 @@
   <!-- Toastr -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
+  <!-- Styles -->
   <style>
     :root{
-      --bg1:#0ea5e9;   /* sky */
-      --bg2:#6366f1;   /* indigo */
-      --card:#0b1220cc;/* glass */
-      --ring:#22d3ee;  /* cyan accent */
-      --text:#e5e7eb;  /* light text */
-      --muted:#94a3b8; /* slate-400 */
+      /* Cool Minimalist palette */
+      --bg1:#E8F0F2;            /* page background */
+      --bg2:#E8F0F2;
+      --text:#2F3640;           /* main text */
+      --muted:#5B6B75;          /* helper/subtle text */
+      --ring:#1ABC9C;           /* accents & focus */
       --success:#10b981;
       --danger:#ef4444;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+      --shadow: 0 12px 40px rgba(44,62,80,.12);
+
+      /* surfaces / fields */
+      --card-bg:#FFFFFF;        /* form container */
+      --section-surface:#F6FAFB;
+      --field-bg:#FFFFFF;
+      --field-border:#D5E0E6;
+      --field-border-focus:#1ABC9C;
+      --link:#1ABC9C;
     }
 
     *{box-sizing:border-box}
@@ -30,19 +40,15 @@
       margin:0;
       font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
       color:var(--text);
-      background:
-        radial-gradient(1200px 800px at 10% -10%, rgba(255,255,255,.15), transparent 60%),
-        radial-gradient(900px 600px at 110% 0%, rgba(255,255,255,.10), transparent 60%),
-        linear-gradient(140deg, var(--bg1), var(--bg2));
+      background: var(--bg1);
     }
 
     .container{ min-height:100%; display:grid; place-items:center; padding:40px 20px; }
 
     .card{
       width:min(920px, 100%);
-      background:var(--card);
-      backdrop-filter: blur(12px);
-      border:1px solid rgba(255,255,255,.15);
+      background: var(--card-bg);
+      border:1px solid #E1EAEE;
       border-radius:20px;
       box-shadow:var(--shadow);
       overflow:hidden;
@@ -50,69 +56,140 @@
 
     .card-header{
       padding:28px 28px 18px;
-      background:
-        radial-gradient(400px 120px at 20% 0%, rgba(34,211,238,.25), transparent 60%),
-        radial-gradient(400px 120px at 80% 0%, rgba(99,102,241,.25), transparent 60%);
-      border-bottom:1px solid rgba(255,255,255,.1);
+      background:#2C3E50;                  /* header bar */
+      color:#FFFFFF;
+      border-bottom:1px solid rgba(0,0,0,.05);
     }
-    .title{ margin:0 0 6px; font-weight:900; font-size:28px; letter-spacing:.3px; }
-    .subtitle{ margin:0; color:var(--muted); font-size:14px; }
+    .title{ margin:0 0 6px; font-weight:900; font-size:28px; letter-spacing:.3px; color:#FFFFFF; }
+    .subtitle{ margin:0; color:rgba(255,255,255,.85); font-size:14px; }
 
     .card-body{ padding:24px; }
 
     .grid{ display:grid; gap:16px; grid-template-columns:1fr 1fr; }
     .grid.full{ grid-template-columns:1fr; }
 
-    label{ display:block; font-weight:700; margin:0 0 6px; color:#f3f4f6; }
+    label{ display:block; font-weight:700; margin:0 0 6px; color:var(--text); }
     .muted{ color:var(--muted); font-weight:600; }
     .help{ color:var(--muted); font-size:12px; margin-top:6px; }
 
+    /* Clean, light inputs */
     input,select,textarea{
       width:100%;
-      background:#0b1220;
-      color:#e5e7eb;
-      border:1px solid rgba(148,163,184,.35);
+      background: var(--field-bg);
+      color:var(--text);
+      border:1px solid var(--field-border);
       border-radius:12px;
       padding:12px 14px;
       font-size:15px;
       outline:none;
-      transition:.2s border-color,.2s box-shadow,.2s transform;
+      transition:.2s border-color,.2s box-shadow,.2s transform,.2s background-color;
     }
-    input::placeholder, textarea::placeholder{ color:#7c8aa3; }
+    input::placeholder, textarea::placeholder{ color:#8FA3AE; }
     input:focus,select:focus,textarea:focus{
-      border-color:var(--ring);
-      box-shadow:0 0 0 4px rgba(34,211,238,.15);
+      border-color: var(--field-border-focus);
+      box-shadow: 0 0 0 3px rgba(26,188,156,.18);
       transform: translateY(-1px);
     }
 
-    .row{ display:flex; gap:10px; align-items:center; }
-    .thumb{ width:40px;height:40px;border-radius:10px;object-fit:cover; border:1px solid rgba(148,163,184,.35); }
+    /* Better spacing between side-by-side fields */
+    .flex{
+      display:flex;
+      gap:20px;           /* spacing between SSC & HSC etc */
+      flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .flex > div{
+      flex:1 1 260px;
+      min-width:260px;
+    }
 
-    .note{ font-size:13px; color:#dbeafe; background:linear-gradient(180deg, rgba(99,102,241,.25), rgba(99,102,241,.15)); border:1px solid rgba(99,102,241,.35); padding:10px 12px; border-radius:12px; margin-top:8px; }
+    /* optional: more space inside dropdown items */
+    select option{ padding:8px 12px; }
 
-    .actions{ display:flex; gap:12px; margin-top:18px; }
-    button{ appearance:none;border:none;cursor:pointer; padding:12px 18px;border-radius:12px;font-weight:800;font-size:15px; transition:.2s transform,.2s box-shadow,.2s background-color; box-shadow:0 10px 30px rgba(34,211,238,.25); }
-    .btn-primary{ background:linear-gradient(135deg, #22d3ee, #60a5fa); color:#0b1220; }
-    .btn-primary:hover{ transform: translateY(-2px); }
-    .btn-secondary{ background:transparent;color:#e5e7eb;border:1px solid rgba(255,255,255,.25); box-shadow:none; }
-    .btn-secondary:hover{ background:rgba(255,255,255,.06); transform: translateY(-2px); }
+    .row{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .thumb{ width:40px;height:40px;border-radius:10px;object-fit:cover; border:1px solid var(--field-border); }
 
-    .section{ margin:8px 0 0; padding:18px 18px 2px; border:1px dashed rgba(255,255,255,.13); border-radius:14px; background:linear-gradient(180deg, rgba(255,255,255,.03), transparent); }
+    /* Info/Note blocks on a light surface */
+    .note{
+      font-size:13px;
+      color:#2F3640;
+      background:var(--section-surface);
+      border:1px solid #E1EAEE;
+      padding:10px 12px;
+      border-radius:12px;
+      margin-top:8px;
+    }
 
-    /* Size chart table */
-    table{ width:100%; border-collapse:collapse; font-size:14px; }
-    th, td{ border:1px solid rgba(148,163,184,.25); padding:8px; text-align:center; }
-    th{ background:rgba(255,255,255,.06); }
+    .actions{ display:flex; gap:12px; margin-top:18px; flex-wrap:wrap; }
+
+    button{
+      appearance:none;
+      border:none;
+      cursor:pointer;
+      padding:12px 18px;
+      border-radius:12px;
+      font-weight:800;
+      font-size:15px;
+      transition:.2s transform,.2s box-shadow,.2s background-color;
+    }
+    .btn-primary{
+      background:#1ABC9C;                 /* teal button */
+      color:#FFFFFF;
+      box-shadow:0 8px 24px rgba(26,188,156,.28);
+    }
+    .btn-primary:hover{ transform: translateY(-2px); filter:brightness(.95); }
+    .btn-secondary{
+      background:#FFFFFF;
+      color:#2C3E50;
+      border:1px solid #CBD8DF;
+      box-shadow:none;
+    }
+    .btn-secondary:hover{ background:#F3F7F9; transform: translateY(-2px); }
+
+    /* Sections get a subtle light surface */
+    .section{
+      margin:8px 0 0;
+      padding:18px 18px 2px;
+      border:1px dashed #E1EAEE;
+      border-radius:14px;
+      background: var(--section-surface);
+    }
+
+    /* Fee paragraph box */
+    .info-box{
+      background:#FFFFFF;
+      border:1px solid #E1EAEE;
+      border-radius:12px;
+      padding:14px 16px;
+      color:var(--text);
+      line-height:1.55;
+    }
+    .info-box p{ margin:0 0 8px; }
+    .info-box p:last-child{ margin:0; }
+
+    /* Radio group spacing (if used) */
+    [role="radiogroup"]{ display:flex; gap:16px; flex-wrap:wrap; margin-top:6px; }
+    [role="radiogroup"] label{ display:inline-flex; align-items:center; gap:6px; }
+
+    /* Table */
+    table{ width:100%; border-collapse:collapse; font-size:14px; color:var(--text); }
+    th, td{ border:1px solid #E1EAEE; padding:8px; text-align:center; }
+    th{ background:#F3F7F9; }
 
     dialog{ border:none; border-radius:16px; padding:0; overflow:hidden; box-shadow:var(--shadow); }
-    dialog::backdrop{ background:rgba(0,0,0,.5); }
-    .modal{ background:#0b1220; color:#e5e7eb; }
-    .modal header{ padding:16px 18px; border-bottom:1px solid rgba(255,255,255,.12); font-weight:800; }
+    dialog::backdrop{ background:rgba(0,0,0,.35); }
+    .modal{ background:#FFFFFF; color:var(--text); }
+    .modal header{ padding:16px 18px; border-bottom:1px solid #EAEFF2; font-weight:800; }
     .modal .content{ padding:18px; }
-    .modal .footer{ display:flex; justify-content:flex-end; padding:12px 18px; border-top:1px solid rgba(255,255,255,.12); }
-    .link{ color:#7dd3fc; text-decoration:underline; cursor:pointer; }
+    .modal .footer{ display:flex; justify-content:flex-end; gap:10px; padding:12px 18px; border-top:1px solid #EAEFF2; }
+    .link{ color:var(--link); text-decoration:underline; cursor:pointer; }
 
-    @media (max-width:900px){ .grid{ grid-template-columns:1fr; } .card-body{ padding:18px; } .card-header{ padding:22px 18px 14px; } .title{ font-size:24px; } }
+    @media (max-width:900px){
+      .grid{ grid-template-columns:1fr; }
+      .card-body{ padding:18px; }
+      .card-header{ padding:22px 18px 14px; }
+      .title{ font-size:24px; }
+    }
   </style>
 </head>
 <body>
@@ -126,20 +203,24 @@
       <div class="card-body">
         <form id="regForm" autocomplete="off" enctype="multipart/form-data">
 
-          <!-- Fee & Payment instructions (TOP TEXT BOX) -->
+          <!-- Fee & Payment info -->
           <div class="section">
             <div class="grid full">
               <div>
-                <label for="fee_text">Fee Structure & Payment Instructions</label>
-                <textarea id="fee_text" name="fee_text" rows="5" placeholder="Write fee details and payment instructions here...">• Alumni registration fee: ______ BDT
-• Each guest aged 12 or over: 1000 BDT
-• Children under 12: Free
+                <label>Fee Structure & Payment Instructions</label>
+                <div class="info-box">
+                  <p><strong>Registration Fee (SSC is primary; HSC used if SSC empty)</strong></p>
+                  <p>• <strong>1985–2000:</strong> 2000 BDT</p>
+                  <p>• <strong>2001–2015:</strong> 1500 BDT</p>
+                  <p>• <strong>2016–2025:</strong> 1000 BDT</p>
+                  <p style="margin-top:10px;"><strong>Per additional guest aged 12+ :</strong> 1000 BDT</p>
 
-Payment:
-• bKash/Nagad: ____________ (Merchant/Personal)
-• Reference: Your Name + Phone
-• After payment, include Txn ID in the notes (optional).</textarea>
-                <div class="help">This text box is editable—update the exact fees and channels before publishing.</div>
+                  <p style="margin-top:12px;"><strong>Payment:</strong></p>
+                  <p>• bKash/Nagad: ____________ (Merchant/Personal)</p>
+                  <p>• Reference: Your Name + Phone</p>
+                  <p>• After payment, include Txn ID in the notes (optional).</p>
+                </div>
+                <div class="help">SSC/HSC whichever is available is used to determine the base fee (SSC preferred).</div>
               </div>
             </div>
           </div>
@@ -154,7 +235,8 @@ Payment:
             </div>
 
             <!-- Side-by-side SSC + HSC dropdowns -->
-            <div class="grid">
+              <div class="help">Pick your SSC and/or HSC year. At least one is required (SSC used as primary).</div>
+            <div class="flex">
               <div>
                 <label for="ssc_year">SSC Year <span class="muted">(1985–2025)</span></label>
                 <select id="ssc_year" name="ssc_year">
@@ -168,7 +250,6 @@ Payment:
                 </select>
               </div>
             </div>
-            <div class="help">Select your SSC and/or HSC year. If only one applies, leave the other blank.</div>
 
             <div class="grid">
               <div>
@@ -222,58 +303,45 @@ Payment:
             </div>
 
             <!-- Attendance & preferences -->
-          <div class="section">
-            <div class="grid">
-              <div>
-                <label for="guests_total">Number of Guests / Family Members Attending</label>
-                <input type="number" id="guests_total" name="guests_total" min="0" value="0" inputmode="numeric" />
-              </div>
-              <div>
-                 <div class="note">An additional 1000 BDT will be charged for each guest aged 12 or over.</div>
-                <label for="guest_above_12">Guests aged 12+ <span class="muted">(required)</span></label>
-                <input type="number" id="guest_above_12" name="guest_above_12" min="0" value="0" required inputmode="numeric" />
-              </div>
-            </div>
-
-            <div class="grid">
-              <div>
-                <label for="tshirt_size">Preferred T-Shirt Size</label>
-                <select id="tshirt_size" name="tshirt_size">
-                  <option value="">-- Select --</option>
-                  <option value="S">S</option>
-                  <option value="M">M</option>
-                  <option value="L">L</option>
-                  <option value="XL">XL</option>
-                  <option value="XXL">XXL</option>
-                </select>
-                <div class="help">Please check the <span id="openSizeChart" class="link">size chart</span> before selecting.</div>
-              </div>
-
-              <!-- Contribution to EUSCAA: Yes/No + conditional amount -->
-              <div>
-                <label>Do you want to donate for EUSCAA?</label>
-                <div class="row" role="radiogroup" aria-label="Donate to EUSCAA?">
-                  <label class="row" style="gap:6px"><input type="radio" name="donate_euscaa" value="yes"> Yes</label>
-                  <label class="row" style="gap:6px"><input type="radio" name="donate_euscaa" value="no" checked> No</label>
+           
+              <div class="flex">
+                <div>
+                  <label for="guests_total">Number of Guests / Family Members Attending</label>
+                  <input type="number" id="guests_total" name="guests_total" min="0" value="0" inputmode="numeric" />
                 </div>
-                <div id="donationAmountWrap" style="margin-top:8px; display:none;">
-                  <label for="donation_bdt" class="muted" style="margin:0 0 4px;">Contribution Amount (BDT)</label>
-                  <input type="number" id="donation_bdt" name="donation_bdt" min="0" step="100" placeholder="e.g., 1000" />
-                  <div class="help">Any amount—small or large—helps support alumni & student welfare.</div>
+                <div>
+                  <label for="guest_above_12">Guests aged 12+ <span class="muted">(required)</span></label>
+                  <input type="number" id="guest_above_12" name="guest_above_12" min="0" value="0" required inputmode="numeric" />
+                  <div class="note">An additional <strong>1000 BDT</strong> will be charged for each guest aged 12 or over.</div>
                 </div>
               </div>
-            </div>
 
-            <div class="grid full">
-              <div>
-                <label for="photo">Upload Your Photo (JPG/PNG, Max 20MB)</label>
-                <div class="row">
-                  <input type="file" id="photo" name="photo" accept="image/jpeg,image/png" />
-                  <img id="photoPreview" class="thumb" alt="" style="display:none;" />
+              <div class="grid">
+                <div>
+                  <label for="tshirt_size">Preferred T-Shirt Size</label>
+                  <select id="tshirt_size" name="tshirt_size">
+                    <option value="">-- Select --</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                  </select>
+                  <div class="help">Please check the <span id="openSizeChart" class="link">size chart</span> before selecting.</div>
                 </div>
-                <div class="help">Used for the reunion directory, ID card, and event displays.</div>
               </div>
-            </div>
+
+              <div class="grid full">
+                <div>
+                  <label for="photo">Upload Your Photo (JPG/PNG, Max 20MB)</label>
+                  <div class="row">
+                    <input type="file" id="photo" name="photo" accept="image/jpeg,image/png" />
+                    <img id="photoPreview" class="thumb" alt="" style="display:none;" />
+                  </div>
+                  <div class="help">Used for the reunion directory, ID card, and event displays.</div>
+                </div>
+              </div>
+          
           </div>
 
           <!-- Actions -->
@@ -285,6 +353,10 @@ Payment:
 
           <!-- Hidden composed field to preserve existing backend 'batch' expectation -->
           <input type="hidden" id="batch" name="batch" />
+          <!-- Hidden client registration id (added on confirm) -->
+          <input type="hidden" id="client_reg_id" name="client_reg_id" />
+          <!-- Hidden computed amount (added on confirm) -->
+          <input type="hidden" id="payable_bdt" name="payable_bdt" />
         </form>
       </div>
     </div>
@@ -293,7 +365,7 @@ Payment:
   <!-- Size Chart Modal -->
   <dialog id="sizeChart">
     <div class="modal">
-      <header>Unisex T‑Shirt Size Chart (inches)</header>
+      <header>Unisex T-Shirt Size Chart (inches)</header>
       <div class="content">
         <table>
           <thead>
@@ -311,6 +383,28 @@ Payment:
       </div>
       <div class="footer">
         <button id="closeSizeChart" class="btn-secondary" style="box-shadow:none">Close</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Summary / Confirmation Modal (appears before submit) -->
+  <dialog id="paymentSummary">
+    <div class="modal">
+      <header>Confirm Registration & Payment Summary</header>
+      <div class="content">
+        <p><strong>Registration ID:</strong> <span id="sumRegId">—</span></p>
+        <p><strong>Primary Year Used:</strong> <span id="sumYear">—</span></p>
+        <p style="margin-top:10px"><strong>Breakdown</strong></p>
+        <ul style="margin:8px 0 0 18px; line-height:1.6">
+          <li>Base Fee: <span id="sumBase">—</span> BDT</li>
+          <li>Guests 12+ Fee: <span id="sumGuests">—</span> BDT</li>
+        </ul>
+        <p style="margin-top:10px; font-size:18px"><strong>Total Payable:</strong> <span id="sumTotal">—</span> BDT</p>
+        <div class="help" style="margin-top:6px">Click “Confirm & Submit” to save your registration.</div>
+      </div>
+      <div class="footer">
+        <button id="cancelSummary" class="btn-secondary">Back</button>
+        <button id="confirmSummary" class="btn-primary">Confirm & Submit</button>
       </div>
     </div>
   </dialog>
@@ -348,19 +442,9 @@ Payment:
     fillYearRange('hsc_year', 1998, 2025);
 
     // Size chart modal
-    const dlg = document.getElementById('sizeChart');
-    document.getElementById('openSizeChart').addEventListener('click', ()=> dlg.showModal());
-    document.getElementById('closeSizeChart').addEventListener('click', ()=> dlg.close());
-
-    // Donate toggle
-    const donationWrap = document.getElementById('donationAmountWrap');
-    document.querySelectorAll('input[name="donate_euscaa"]').forEach(r => {
-      r.addEventListener('change', () => {
-        const yes = document.querySelector('input[name="donate_euscaa"][value="yes"]').checked;
-        donationWrap.style.display = yes ? 'block' : 'none';
-        if(!yes){ document.getElementById('donation_bdt').value = ''; }
-      });
-    });
+    const dlgSize = document.getElementById('sizeChart');
+    document.getElementById('openSizeChart').addEventListener('click', ()=> dlgSize.showModal());
+    document.getElementById('closeSizeChart').addEventListener('click', ()=> dlgSize.close());
 
     // Currency helper logic
     const currencyHelper = document.getElementById('currencyHelper');
@@ -374,27 +458,22 @@ Payment:
       const t = text.toLowerCase();
       return t.includes('bangladesh') || t.includes('bd') || t.includes('dhaka');
     }
-
     function toggleCurrencyHelper(){
       const show = !seemsInBangladesh(locationInput.value.trim());
       if(currencyHelper){ currencyHelper.style.display = show ? 'block' : 'none'; }
     }
-
     function recomputeBDT(){
       const rate = parseFloat(fxRate?.value || '0');
       const usd = parseFloat(usdAmount?.value || '0');
       if(!isFinite(rate) || !isFinite(usd)) { if(bdtAmount) bdtAmount.value = ''; return; }
       if(bdtAmount) bdtAmount.value = (rate * usd).toFixed(2);
     }
-
     locationInput?.addEventListener('input', toggleCurrencyHelper);
     fxRate?.addEventListener('input', recomputeBDT);
     usdAmount?.addEventListener('input', recomputeBDT);
-
-    // Initialize helper visibility on load
     toggleCurrencyHelper();
 
-
+    // Photo preview + validation
     photoEl?.addEventListener('change', function(){
       const file = this.files && this.files[0];
       if(!file){ photoPreview.style.display = 'none'; photoPreview.src = ''; return; }
@@ -417,7 +496,7 @@ Payment:
       photoPreview.style.display = 'inline-block';
     });
 
-    // Guests cross-check (now with numeric input)
+    // Guests cross-check
     function validateGuests(){
       const total = parseInt($('#guests_total').val() || '0', 10);
       const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
@@ -442,23 +521,91 @@ Payment:
       return parts.join(', ');
     }
 
-    // Submit handler (uses FormData for file upload)
+    // === Fee Logic ===
+    // Determine primary year (SSC preferred, otherwise HSC). Require at least one.
+    function getPrimaryYear(){
+      const ssc = $('#ssc_year').val();
+      const hsc = $('#hsc_year').val();
+      if(ssc) return parseInt(ssc,10);
+      if(hsc) return parseInt(hsc,10);
+      return null;
+    }
+    function getBaseFee(year){
+      if(year === null || !isFinite(year)) return 0;
+      if(year >= 1985 && year <= 2000) return 2000;
+      if(year >= 2001 && year <= 2015) return 1500;
+      if(year >= 2016 && year <= 2025) return 1000;
+      // fallback if out of expected range
+      return 0;
+    }
+    function computePayable(){
+      const primaryYear = getPrimaryYear();
+      const base = getBaseFee(primaryYear);
+      const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
+      const guestsFee = (isFinite(guests12) ? guests12 : 0) * 1000;
+      const total = base + guestsFee;
+      return { primaryYear, base, guestsFee, total };
+    }
+
+    // Summary dialog
+    const sumDlg = document.getElementById('paymentSummary');
+    const sumRegIdEl = document.getElementById('sumRegId');
+    const sumYearEl = document.getElementById('sumYear');
+    const sumBaseEl = document.getElementById('sumBase');
+    const sumGuestsEl = document.getElementById('sumGuests');
+    const sumTotalEl = document.getElementById('sumTotal');
+    const confirmBtn = document.getElementById('confirmSummary');
+    const cancelBtn = document.getElementById('cancelSummary');
+
+    function genRegistrationId(){
+      const ts = new Date();
+      const pad = n => String(n).padStart(2,'0');
+      const stamp = ts.getFullYear().toString() + pad(ts.getMonth()+1) + pad(ts.getDate()) + '-' + pad(ts.getHours()) + pad(ts.getMinutes()) + pad(ts.getSeconds());
+      const rand = Math.floor(1000 + Math.random()*9000);
+      return `EUSC-${stamp}-${rand}`;
+    }
+
+    let pendingFormData = null;   // holds FormData between dialog and final submit
+
+    // Submit handler — show summary first
     form.on('submit', function(e){
       e.preventDefault();
       if(!validateGuests()) return;
 
-      // ensure batch string
+      // require at least one of SSC/HSC
+      const primaryYear = getPrimaryYear();
+      if(primaryYear === null){
+        toastr.error('Please select at least one: SSC Year or HSC Year.');
+        return;
+      }
+
+      // prepare display values
+      const { base, guestsFee, total } = computePayable();
+      if(base === 0){
+        toastr.error('Selected year is out of the allowed range.');
+        return;
+      }
+
+      const regId = genRegistrationId();
+      $('#client_reg_id').val(regId); // set hidden field for backend
+
+      // fill dialog
+      sumRegIdEl.textContent = regId;
+      sumYearEl.textContent = String(primaryYear);
+      sumBaseEl.textContent = String(base);
+      sumGuestsEl.textContent = String(guestsFee);
+      sumTotalEl.textContent = String(total);
+
+      // Keep computed total to submit after confirmation
+      $('#payable_bdt').val(String(total));
+
+      // Build FormData now, but do not send yet
       $('#batch').val(composeBatch());
-
-      const originalBtnText = submitBtn.text();
-      submitBtn.prop('disabled', true).text('Submitting…');
-      saving.show();
-
       const fd = new FormData();
       fd.append('name', $('#name').val().trim());
       fd.append('email', $('#email').val().trim());
       fd.append('phone', $('#phone').val().trim());
-      fd.append('batch', $('#batch').val()); // composed string
+      fd.append('batch', $('#batch').val());
       fd.append('ssc_year', $('#ssc_year').val());
       fd.append('hsc_year', $('#hsc_year').val());
       fd.append('location', $('#location').val().trim());
@@ -466,23 +613,28 @@ Payment:
       fd.append('guests_total', $('#guests_total').val());
       fd.append('guest_above_12', $('#guest_above_12').val());
       fd.append('tshirt_size', $('#tshirt_size').val());
-
-      const donateChoice = document.querySelector('input[name="donate_euscaa"]:checked')?.value || 'no';
-      fd.append('donate_euscaa', donateChoice); // yes/no
-      if(donateChoice === 'yes'){
-        fd.append('donation_bdt', $('#donation_bdt').val());
-      } else {
-        fd.append('donation_bdt', '');
-      }
-
-      fd.append('fee_text', $('#fee_text').val());
-
+      fd.append('client_reg_id', $('#client_reg_id').val());
+      fd.append('payable_bdt', $('#payable_bdt').val());
       if(photoEl && photoEl.files && photoEl.files[0]){ fd.append('photo', photoEl.files[0]); }
+      pendingFormData = fd;
+
+      // open dialog
+      sumDlg.showModal();
+    });
+
+    cancelBtn.addEventListener('click', () => sumDlg.close());
+
+    confirmBtn.addEventListener('click', () => {
+      if(!pendingFormData){ sumDlg.close(); return; }
+
+      const originalBtnText = submitBtn.text();
+      submitBtn.prop('disabled', true).text('Submitting…');
+      saving.show();
 
       $.ajax({
         url: "{{ route('registrations.store') }}",
         method: "POST",
-        data: fd,
+        data: pendingFormData,
         contentType: false,
         processData: false
       })
@@ -492,7 +644,6 @@ Payment:
           form.trigger('reset');
           photoPreview.style.display = 'none';
           photoPreview.src = '';
-          donationWrap.style.display = 'none';
         } else if(resp && resp.message){
           toastr.info(resp.message);
         } else {
@@ -512,15 +663,15 @@ Payment:
       .always(function(){
         submitBtn.prop('disabled', false).text(originalBtnText);
         saving.hide();
+        sumDlg.close();
+        pendingFormData = null;
       });
     });
 
-    // Reset Preview + donation toggle
+    // Reset Preview
     document.getElementById('resetBtn')?.addEventListener('click', () => {
       photoPreview.style.display = 'none';
       photoPreview.src = '';
-      donationWrap.style.display = 'none';
-      document.querySelector('input[name="donate_euscaa"][value="no"]').checked = true;
     });
   </script>
 </body>
