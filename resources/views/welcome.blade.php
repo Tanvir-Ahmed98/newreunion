@@ -232,8 +232,7 @@
     <div class="bg-white text-slate-800">
       <header class="px-5 py-4 border-b border-slate-200 font-extrabold">Confirm Registration & Payment Summary</header>
       <div class="p-5 space-y-2">
-        <p><strong>Registration ID:</strong> <span id="sumRegId">—</span></p>
-        <p><strong>Primary Year Used:</strong> <span id="sumYear">—</span></p>
+        <p><strong>Registration ID:</strong> <span id="sumUid">—</span></p>
         <p class="mt-2 font-semibold">Breakdown</p>
         <ul class="list-disc pl-6 leading-7">
           <li>Base Fee: <span id="sumBase">—</span> BDT</li>
@@ -349,18 +348,44 @@
       if(year >= 2016 && year <= 2025) return 1000;
       return 0;
     }
-    function computePayable(){
-      const primaryYear = getPrimaryYear();
-      const base = getBaseFee(primaryYear);
-      const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
-      const guestsFee = (isFinite(guests12) ? guests12 : 0) * 1000;
-      const total = base + guestsFee;
-      return { primaryYear, base, guestsFee, total };
+   function computePayable(){
+  const primaryYear = getPrimaryYear();
+  const baseLocal = getBaseFee(primaryYear);
+  const liveAbroad = document.getElementById('live_abroad_yes')?.checked;
+
+  // Override base fee for foreign alumni
+  const base = liveAbroad ? 5000 : baseLocal;
+
+  const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
+  const guestsFee = (isFinite(guests12) ? guests12 : 0) * 1000;
+  const total = base + guestsFee;
+  return { primaryYear, base, guestsFee, total };
+}
+
+
+    // --- Unique ID (preview) helpers ---
+    function computeBaseUid(name, ssc, hsc, phone){
+      const year = (ssc && String(ssc).trim()) ? String(ssc).trim() : String(hsc || '').trim();
+      if(!year) return null;
+
+      // first 3 letters of name (letters only)
+      const first3 = String(name || '')
+        .toLowerCase()
+        .replace(/[^a-z]/g,'')
+        .slice(0,3);
+
+      // last 4 digits of phone
+      const digits = String(phone || '').replace(/\D/g,'');
+      const last4  = digits.slice(-4);
+
+      if(!first3 || last4.length < 4) return null;
+      return `${year}-${first3}-${last4}`;
     }
 
     // Summary dialog
     const sumDlg = document.getElementById('paymentSummary');
     const sumRegIdEl = document.getElementById('sumRegId');
+    const sumUidEl = document.getElementById('sumUid');
     const sumYearEl = document.getElementById('sumYear');
     const sumBaseEl = document.getElementById('sumBase');
     const sumGuestsEl = document.getElementById('sumGuests');
@@ -396,8 +421,12 @@
       const regId = genRegistrationId();
       $('#client_reg_id').val(regId);
 
-      sumRegIdEl.textContent = regId;
-      sumYearEl.textContent = String(primaryYear);
+      // Build UID preview
+      const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
+      sumUidEl.textContent = baseUid || '—';
+
+      // sumRegIdEl.textContent = regId;
+      // sumYearEl.textContent = String(primaryYear);
       sumBaseEl.textContent = String(base);
       sumGuestsEl.textContent = String(guestsFee);
       sumTotalEl.textContent = String(total);
@@ -421,6 +450,9 @@
       fd.append('payable_bdt', $('#payable_bdt').val());
       // Yes/No only for live_abroad
       fd.append('live_abroad', (document.getElementById('live_abroad_yes')?.checked) ? 'yes' : 'no');
+      // Pass UID candidate to server (server will de-duplicate and finalize)
+      if (baseUid) fd.append('unique_id_candidate', baseUid);
+
       if(photoEl && photoEl.files && photoEl.files[0]){ fd.append('photo', photoEl.files[0]); }
       pendingFormData = fd;
 
@@ -445,7 +477,13 @@
       })
       .done(function(resp){
         if(resp && resp.success){
-          toastr.success(resp.message || 'Registration saved!');
+          // If backend returns final unique_id, show it
+          if(resp.unique_id){
+            toastr.success(`Registration saved. Your Unique ID: ${resp.unique_id}`);
+            document.getElementById('sumUid').textContent = resp.unique_id;
+          } else {
+            toastr.success(resp.message || 'Registration saved!');
+          }
           form.trigger('reset');
           photoPreview.classList.add('hidden');
           photoPreview.src = '';
@@ -477,6 +515,7 @@
     document.getElementById('resetBtn')?.addEventListener('click', () => {
       photoPreview.classList.add('hidden');
       photoPreview.src = '';
+      document.getElementById('sumUid').textContent = '—';
     });
   </script>
 </body>
