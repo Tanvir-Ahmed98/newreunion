@@ -8,25 +8,33 @@ use Illuminate\Support\Facades\Storage;
 class Registration extends Model
 {
     protected $fillable = [
-        'name', 'email', 'phone',
-        'ssc_batch', 'hsc_batch', 'guest_above_12',
-
-        // new
-        'batch', 'location', 'profession',
-        'guests_total', 'tshirt_size', 'donation_bdt', 'photo_path',
+        'name',
+        'email',
+        'phone',
+        'location',
+        'profession',
+        'batch',
+        'guests_total',
+        'guest_above_12',
+        'tshirt_size',
+        'client_reg_id',
+        'payable_amount', // ✅ correct field name
+        'photo_path',
     ];
 
     protected $casts = [
         'guest_above_12' => 'integer',
-        'donation_bdt'   => 'integer',
-        'guests_total'   => 'integer', // 0..5 (5 means 5+)
+        'guests_total'   => 'integer',
+        'payable_amount' => 'decimal:2',
     ];
 
     protected $appends = ['photo_url'];
 
+    // ✅ Automatically provide public URL for stored photo
     public function getPhotoUrlAttribute(): ?string
     {
-        if (!$this->photo_path) return null;
-        return Storage::disk('public')->url($this->photo_path);
+        return $this->photo_path
+            ? Storage::disk('public')->url($this->photo_path)
+            : null;
     }
 }

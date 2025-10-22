@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
+             $table->string('client_reg_id', 120)->nullable();
             $table->string('name', 120);
             $table->string('email')->unique();
             $table->string('phone', 30)->nullable();
@@ -21,7 +22,7 @@ return new class extends Migration
             $table->string('batch')->nullable(); // e.g. "SSC – 1985, HSC – 1990"
             $table->string('location')->nullable();
             $table->string('profession')->nullable();
-
+            $table->string('payable_amount')->nullable();
             // Guest counts
             $table->unsignedTinyInteger('guests_total')->default(0); // 0..5 (5 means 5+)
             $table->unsignedTinyInteger('guest_above_12')->default(0);
@@ -34,8 +35,7 @@ return new class extends Migration
             $table->string('photo_path')->nullable();
 
             // Legacy (optional, keep if you want backward compatibility)
-            $table->unsignedSmallInteger('ssc_batch')->nullable();
-            $table->unsignedSmallInteger('hsc_batch')->nullable();
+        
 
             $table->timestamps();
         });

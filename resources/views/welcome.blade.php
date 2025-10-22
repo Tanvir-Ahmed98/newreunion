@@ -43,12 +43,12 @@
                 <div class="bg-white border border-slate-200 rounded-xl p-4 leading-6 text-slate-800">
                   <p class="font-semibold">Registration Fee:</p>
                   <p>• <strong>1985-2015:</strong> 2000 BDT</p>
-                  <p>• <strong>2015-2025:</strong> 1500 BDT</p>
+                  <p>• <strong>2016-2025:</strong> 1500 BDT</p>
                   <p>• <strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
                   <p class="mt-2"><strong>Additional Guest age 12 and above:</strong> 1000 BDT</p>
 
                   <p class="mt-3 font-semibold">Payment Method: <strong> Bkash</strong></p>
-                  <p>• Marchant Acc: +8801XXXXXXX (EUSCAA)</p>
+                  <p>• Marchant Acc: +8801879996066 (EUSCAA)</p>
                 </div>
                 <div class="text-red-600 text-sm mt-2">A unique reference number will be generated after submitting this form. Use this number to pay your registration fee. Registration will not be completed without it.</div>
               </div>
@@ -106,7 +106,7 @@
               </div>
             </div>
 
-            <!-- Do you live abroad? (Yes/No only, no helper) -->
+            <!-- Do you live abroad? (Yes/No only) -->
             <div class="grid grid-cols-1 gap-4">
               <div>
                 <label class="block font-bold mb-1">Do you live abroad? <span class="text-slate-500 font-semibold">(required)</span></label>
@@ -190,7 +190,7 @@
           <!-- Hidden fields -->
           <input type="hidden" id="batch" name="batch" />
           <input type="hidden" id="client_reg_id" name="client_reg_id" />
-          <input type="hidden" id="payable_bdt" name="payable_bdt" />
+          <input type="hidden" id="payable_amount" name="payable_amount" />
         </form>
       </div>
     </div>
@@ -260,14 +260,12 @@
     // CSRF for AJAX
     $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') } });
 
-    // Elements
     const form = $('#regForm');
     const submitBtn = $('#submitBtn');
     const saving = $('#saving');
     const photoEl = document.getElementById('photo');
     const photoPreview = document.getElementById('photoPreview');
 
-    // Year dropdowns
     function fillYearRange(selectId, start, end){
       const sel = document.getElementById(selectId);
       for(let y=end; y>=start; y--){
@@ -285,12 +283,12 @@
     document.getElementById('openSizeChart').addEventListener('click', ()=> dlgSize.showModal());
     document.getElementById('closeSizeChart').addEventListener('click', ()=> dlgSize.close());
 
-    // Photo preview + validation
+    // Photo preview
     photoEl?.addEventListener('change', function(){
       const file = this.files && this.files[0];
       if(!file){ photoPreview.classList.add('hidden'); photoPreview.src=''; return; }
       const okTypes = ['image/jpeg','image/png'];
-      const maxBytes = 20 * 1024 * 1024; // 20MB
+      const maxBytes = 20 * 1024 * 1024;
       if(!okTypes.includes(file.type)){
         toastr.error('Photo must be a JPG or PNG.');
         this.value = '';
@@ -308,7 +306,7 @@
       photoPreview.classList.remove('hidden');
     });
 
-    // Guests cross-check
+    // Guest validation
     function validateGuests(){
       const total = parseInt($('#guests_total').val() || '0', 10);
       const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
@@ -323,7 +321,6 @@
       return true;
     }
 
-    // Compose legacy 'batch'
     function composeBatch(){
       const ssc = $('#ssc_year').val();
       const hsc = $('#hsc_year').val();
@@ -333,7 +330,6 @@
       return parts.join(', ');
     }
 
-    // Fees
     function getPrimaryYear(){
       const ssc = $('#ssc_year').val();
       const hsc = $('#hsc_year').val();
@@ -341,6 +337,7 @@
       if(hsc) return parseInt(hsc,10);
       return null;
     }
+
     function getBaseFee(year){
       if(year === null || !isFinite(year)) return 0;
       if(year >= 1985 && year <= 2000) return 2000;
@@ -348,45 +345,30 @@
       if(year >= 2016 && year <= 2025) return 1000;
       return 0;
     }
-   function computePayable(){
-  const primaryYear = getPrimaryYear();
-  const baseLocal = getBaseFee(primaryYear);
-  const liveAbroad = document.getElementById('live_abroad_yes')?.checked;
 
-  // Override base fee for foreign alumni
-  const base = liveAbroad ? 5000 : baseLocal;
+    function computePayable(){
+      const primaryYear = getPrimaryYear();
+      const baseLocal = getBaseFee(primaryYear);
+      const liveAbroad = document.getElementById('live_abroad_yes')?.checked;
+      const base = liveAbroad ? 5000 : baseLocal;
+      const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
+      const guestsFee = (isFinite(guests12) ? guests12 : 0) * 1000;
+      const total = base + guestsFee;
+      return { primaryYear, base, guestsFee, total };
+    }
 
-  const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
-  const guestsFee = (isFinite(guests12) ? guests12 : 0) * 1000;
-  const total = base + guestsFee;
-  return { primaryYear, base, guestsFee, total };
-}
-
-
-    // --- Unique ID (preview) helpers ---
     function computeBaseUid(name, ssc, hsc, phone){
       const year = (ssc && String(ssc).trim()) ? String(ssc).trim() : String(hsc || '').trim();
       if(!year) return null;
-
-      // first 3 letters of name (letters only)
-      const first3 = String(name || '')
-        .toLowerCase()
-        .replace(/[^a-z]/g,'')
-        .slice(0,3);
-
-      // last 4 digits of phone
+      const first3 = String(name || '').toLowerCase().replace(/[^a-z]/g,'').slice(0,3);
       const digits = String(phone || '').replace(/\D/g,'');
       const last4  = digits.slice(-4);
-
       if(!first3 || last4.length < 4) return null;
       return `${year}-${first3}-${last4}`;
     }
 
-    // Summary dialog
     const sumDlg = document.getElementById('paymentSummary');
-    const sumRegIdEl = document.getElementById('sumRegId');
     const sumUidEl = document.getElementById('sumUid');
-    const sumYearEl = document.getElementById('sumYear');
     const sumBaseEl = document.getElementById('sumBase');
     const sumGuestsEl = document.getElementById('sumGuests');
     const sumTotalEl = document.getElementById('sumTotal');
@@ -401,7 +383,6 @@
 
     let pendingFormData = null;
 
-    // Submit
     form.on('submit', function(e){
       e.preventDefault();
       if(!validateGuests()) return;
@@ -421,17 +402,13 @@
       const regId = genRegistrationId();
       $('#client_reg_id').val(regId);
 
-      // Build UID preview
       const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
       sumUidEl.textContent = baseUid || '—';
-
-      // sumRegIdEl.textContent = regId;
-      // sumYearEl.textContent = String(primaryYear);
       sumBaseEl.textContent = String(base);
       sumGuestsEl.textContent = String(guestsFee);
       sumTotalEl.textContent = String(total);
 
-      $('#payable_bdt').val(String(total));
+      $('#payable_amount').val(String(total));
       $('#batch').val(composeBatch());
 
       const fd = new FormData();
@@ -446,24 +423,18 @@
       fd.append('guests_total', $('#guests_total').val());
       fd.append('guest_above_12', $('#guest_above_12').val());
       fd.append('tshirt_size', $('#tshirt_size').val());
-      fd.append('client_reg_id', $('#client_reg_id').val());
-      fd.append('payable_bdt', $('#payable_bdt').val());
-      // Yes/No only for live_abroad
+      fd.append('payable_amount', $('#payable_amount').val());
       fd.append('live_abroad', (document.getElementById('live_abroad_yes')?.checked) ? 'yes' : 'no');
-      // Pass UID candidate to server (server will de-duplicate and finalize)
-      if (baseUid) fd.append('unique_id_candidate', baseUid);
-
+      if (baseUid) fd.append('client_reg_id', baseUid);
       if(photoEl && photoEl.files && photoEl.files[0]){ fd.append('photo', photoEl.files[0]); }
       pendingFormData = fd;
 
       sumDlg.showModal();
     });
 
-    // Dialog buttons
     document.getElementById('cancelSummary').addEventListener('click', () => sumDlg.close());
     document.getElementById('confirmSummary').addEventListener('click', () => {
       if(!pendingFormData){ sumDlg.close(); return; }
-
       const originalBtnText = submitBtn.text();
       submitBtn.prop('disabled', true).text('Submitting…');
       saving.removeClass('hidden');
@@ -477,7 +448,6 @@
       })
       .done(function(resp){
         if(resp && resp.success){
-          // If backend returns final unique_id, show it
           if(resp.unique_id){
             toastr.success(`Registration saved. Your Unique ID: ${resp.unique_id}`);
             document.getElementById('sumUid').textContent = resp.unique_id;
@@ -511,7 +481,6 @@
       });
     });
 
-    // Reset Preview
     document.getElementById('resetBtn')?.addEventListener('click', () => {
       photoPreview.classList.add('hidden');
       photoPreview.src = '';
