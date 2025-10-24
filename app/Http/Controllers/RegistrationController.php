@@ -7,19 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
+use App\Jobs\SendRegistrationEmailJob;
+use App\Jobs\SendRegistrationSmsJob;
 
 class RegistrationController extends Controller
 {
-    public function index(): JsonResponse
-    {
-        return response()->json([
-            'data' => Registration::latest()->get()
-        ]);
-    }
-
     public function store(Request $request): JsonResponse
     {
-        // ✅ Validate all input fields
+        // ✅ Validate input
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
@@ -32,7 +27,7 @@ class RegistrationController extends Controller
             'client_reg_id' => 'required|string|max:50',
             'batch' => 'nullable|string|max:100',
             'payable_amount' => 'required|numeric|min:0',
-            'photo' => 'nullable|image|mimes:jpeg,png|max:20480', // 20MB
+            'photo' => 'nullable|image|mimes:jpeg,png|max:20480',
         ]);
 
         // ✅ Cross-field validation
@@ -52,24 +47,39 @@ class RegistrationController extends Controller
 
         // ✅ Save registration
         $registration = Registration::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'phone' => $validated['phone'],
-            'location' => $validated['location'],
-            'profession' => $validated['profession'] ?? null,
-            'guests_total' => $validated['guests_total'] ?? 0,
-            'guest_above_12' => $validated['guest_above_12'] ?? 0,
-            'tshirt_size' => $validated['tshirt_size'] ?? null,
-            'client_reg_id' =>$validated['client_reg_id'] ?? null,
-            'batch' => $validated['batch'] ?? null,
-            'payable_amount' => $validated['payable_amount'], // ✅ fixed field name
-            'photo_path' => $photoPath,
+            'name'            => $validated['name'],
+            'email'           => $validated['email'],
+            'phone'           => $validated['phone'],
+            'location'        => $validated['location'],
+            'profession'      => $validated['profession'] ?? null,
+            'guests_total'    => $validated['guests_total'] ?? 0,
+            'guest_above_12'  => $validated['guest_above_12'] ?? 0,
+            'tshirt_size'     => $validated['tshirt_size'] ?? null,
+            'client_reg_id'   => $validated['client_reg_id'] ?? null,
+            'batch'           => $validated['batch'] ?? null,
+            'payable_amount'  => $validated['payable_amount'],
+            'photo_path'      => $photoPath,
         ]);
 
+        // ✅ Queue the email (background)
+        try {
+            dispatch(new SendRegistrationEmailJob($registration));
+            // or: SendRegistrationEmailJob::dispatch($registration);
+        } catch (\Throwable $e) {
+            \Log::error('Failed to dispatch email job: ' . $e->getMessage());
+        }
+
+        // ✅ Queue the SMS (background) - optional but recommended
+        try {
+            dispatch(new SendRegistrationSmsJob($registration));
+        } catch (\Throwable $e) {
+            \Log::error('Failed to dispatch SMS job: ' . $e->getMessage());
+        }
+
         return response()->json([
-            'success' => true,
-            'message' => 'Registration saved successfully!',
-            'unique_id' => $registration->unique_id_candidate,
+            'success'   => true,
+            'message'   => 'Registration saved! Email & SMS queued.',
+            // 'unique_id' => $registration->unique_id_candidate ?? $registration->id,
         ]);
     }
 }

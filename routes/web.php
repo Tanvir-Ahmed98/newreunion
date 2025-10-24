@@ -6,3 +6,9 @@ use App\Http\Controllers\RegistrationController;
 Route::view('/', 'welcome');
 Route::get('/registrations', [RegistrationController::class, 'index'])->name('registrations.index');
 Route::post('/registrations', [RegistrationController::class, 'store'])->name('registrations.store');
+
+
+
+##twillow
+
+// Route::get('sendSMS', [TwilioSMSController::class, 'index']);
