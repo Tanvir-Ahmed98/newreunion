@@ -8,7 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use App\Jobs\SendRegistrationEmailJob;
-use App\Jobs\SendRegistrationSmsJob;
+
 
 class RegistrationController extends Controller
 {
