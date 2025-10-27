@@ -15,20 +15,22 @@ class RegistrationController extends Controller
     public function store(Request $request): JsonResponse
     {
         // ✅ Validate input
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255',
-            'phone' => 'required|string|max:30',
-            'location' => 'required|string|max:255',
-            'profession' => 'nullable|string|max:255',
-            'guests_total' => 'nullable|integer|min:0',
-            'guest_above_12' => 'required|integer|min:0',
-            'tshirt_size' => 'nullable|in:S,M,L,XL,XXL',
-            'client_reg_id' => 'required|string|max:50',
-            'batch' => 'nullable|string|max:100',
-            'payable_amount' => 'required|numeric|min:0',
-            'photo' => 'nullable|image|mimes:jpeg,png|max:20480',
-        ]);
+     $validated = $request->validate([
+    'name' => 'required|string|max:255',
+    'email' => 'required|email|max:255|unique:registrations,email',
+    'phone' => 'required|string|max:30',
+    'location' => 'required|string|max:255',
+    'profession' => 'nullable|string|max:255',
+    'guests_total' => 'nullable|integer|min:0',
+    'guest_above_12' => 'required|integer|min:0',
+    'tshirt_size' => 'nullable|in:S,M,L,XL,XXL',
+    'client_reg_id' => 'required|string|max:50',
+    'batch' => 'nullable|string|max:100',
+    'payable_amount' => 'required|numeric|min:0',
+    'photo' => 'nullable|image|mimes:jpeg,png|max:20480',
+], [
+    'email.unique' => 'This email has already been registered for the event.',
+]);
 
         // ✅ Cross-field validation
         $total = (int) ($validated['guests_total'] ?? 0);

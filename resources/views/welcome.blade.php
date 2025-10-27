@@ -16,12 +16,13 @@
 
   <!-- Minimal styles just for <dialog> backdrop -->
   <style>
-    dialog::backdrop{ background:rgba(0,0,0,.35); }
+    dialog::backdrop { background: rgba(0,0,0,.35); }
   </style>
 </head>
 <body class="min-h-screen bg-slate-100 text-slate-800">
   <div class="min-h-screen grid place-items-center p-10">
     <div class="w-full max-w-[920px] bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden">
+
       <!-- Header -->
       <div class="bg-slate-800 text-white border-b border-black/5 px-7 pt-7 pb-5 text-center">
         <h1 class="font-black text-2xl md:text-3xl tracking-tight mb-3">🎓 EUSCIANS Reunion 2026 – Registration</h1>
@@ -43,11 +44,10 @@
                 <div class="bg-white border border-slate-200 rounded-xl p-4 leading-6 text-slate-800">
                   <p class="font-semibold">Registration Fee:</p>
                   <p>• <strong>1985-2015:</strong> 2000 BDT</p>
-                  <p>• <strong>2016-2025:</strong> 1500 BDT</p>
+                  <p>• <strong>2016-2026:</strong> 1500 BDT</p>
                   <p>• <strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
                   <p class="mt-2"><strong>Additional Guest age 12 and above:</strong> 1000 BDT</p>
-
-                  <p class="mt-3 font-semibold">Payment Method: <strong> Bkash</strong></p>
+                  <p class="mt-3 font-semibold">Payment Method: <strong>Bkash</strong></p>
                   <p>• Marchant Acc: +8801879996066 (EUSCAA)</p>
                 </div>
                 <div class="text-red-600 text-sm mt-2">A unique reference number will be generated after submitting this form. Use this number to pay your registration fee. Registration will not be completed without it.</div>
@@ -69,14 +69,14 @@
 
             <div class="flex flex-wrap gap-5 mt-1">
               <div class="min-w-[260px] flex-1">
-                <label for="ssc_year" class="block font-bold mb-1">SSC Year <span class="text-slate-500 font-semibold">(1985–2025)</span></label>
+                <label for="ssc_year" class="block font-bold mb-1">SSC Year <span class="text-slate-500 font-semibold">(1985–2026)</span></label>
                 <select id="ssc_year" name="ssc_year"
                         class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
                 </select>
               </div>
               <div class="min-w-[260px] flex-1">
-                <label for="hsc_year" class="block font-bold mb-1">HSC Year <span class="text-slate-500 font-semibold">(1998–2025)</span></label>
+                <label for="hsc_year" class="block font-bold mb-1">HSC Year <span class="text-slate-500 font-semibold">(1998–2026)</span></label>
                 <select id="hsc_year" name="hsc_year"
                         class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
@@ -106,7 +106,6 @@
               </div>
             </div>
 
-            <!-- Do you live abroad? (Yes/No only) -->
             <div class="grid grid-cols-1 gap-4">
               <div>
                 <label class="block font-bold mb-1">Do you live abroad? <span class="text-slate-500 font-semibold">(required)</span></label>
@@ -131,7 +130,6 @@
               </div>
             </div>
 
-            <!-- Attendance & preferences -->
             <div class="flex flex-wrap gap-5">
               <div class="min-w-[260px] flex-1">
                 <label for="guests_total" class="block font-bold mb-1">Number of Guests / Family Members Attending</label>
@@ -219,7 +217,6 @@
             </tbody>
           </table>
         </div>
-        <div class="text-slate-500 text-sm mt-2">Tip: Measure around the fullest part of the chest. If in between sizes, choose the larger size.</div>
       </div>
       <div class="px-5 py-3 border-t border-slate-200 flex justify-end">
         <button id="closeSizeChart" class="px-4 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-100">Close</button>
@@ -243,21 +240,23 @@
       </div>
       <div class="px-5 py-3 border-t border-slate-200 flex justify-end gap-2">
         <button id="cancelSummary" class="px-4 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-100">Back</button>
-        <button id="confirmSummary" class="px-4 py-2 rounded-lg font-bold text-white bg-teal-500 hover:brightness-95 shadow">Confirm & Submit</button>
+        <button id="confirmSummary" class="px-4 py-2 rounded-lg font-bold text-white bg-teal-500 hover:brightness-95 shadow flex items-center gap-2 justify-center">
+          <span class="btn-text">Confirm & Submit</span>
+          <svg id="btnSpinner" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </dialog>
 
-  <!-- jQuery -->
+  <!-- jQuery & Toastr -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <!-- Toastr -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
   <script>
-    // Toastr config
     toastr.options = { closeButton: true, progressBar: true, newestOnTop: true, positionClass: "toast-top-right", timeOut: 3000 };
-
-    // CSRF for AJAX
     $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') } });
 
     const form = $('#regForm');
@@ -265,7 +264,11 @@
     const saving = $('#saving');
     const photoEl = document.getElementById('photo');
     const photoPreview = document.getElementById('photoPreview');
+    const confirmBtn = document.getElementById('confirmSummary');
+    const btnSpinner = document.getElementById('btnSpinner');
+    const btnText = confirmBtn.querySelector('.btn-text');
 
+    // Fill years
     function fillYearRange(selectId, start, end){
       const sel = document.getElementById(selectId);
       for(let y=end; y>=start; y--){
@@ -275,10 +278,10 @@
         sel.appendChild(opt);
       }
     }
-    fillYearRange('ssc_year', 1985, 2025);
-    fillYearRange('hsc_year', 1998, 2025);
+    fillYearRange('ssc_year', 1985, 2026);
+    fillYearRange('hsc_year', 1998, 2026);
 
-    // Size chart modal
+    // Modals
     const dlgSize = document.getElementById('sizeChart');
     document.getElementById('openSizeChart').addEventListener('click', ()=> dlgSize.showModal());
     document.getElementById('closeSizeChart').addEventListener('click', ()=> dlgSize.close());
@@ -306,65 +309,29 @@
       photoPreview.classList.remove('hidden');
     });
 
-    // Guest validation
+    // Validation helpers
     function validateGuests(){
       const total = parseInt($('#guests_total').val() || '0', 10);
       const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
-      if(guests12 > total){
-        toastr.error('Guests aged 12+ cannot exceed total guests.');
-        return false;
-      }
-      if(total < 0 || guests12 < 0){
-        toastr.error('Guest numbers cannot be negative.');
-        return false;
-      }
+      if(guests12 > total){ toastr.error('Guests aged 12+ cannot exceed total guests.'); return false; }
+      if(total < 0 || guests12 < 0){ toastr.error('Guest numbers cannot be negative.'); return false; }
       return true;
     }
-
     function composeBatch(){
-      const ssc = $('#ssc_year').val();
-      const hsc = $('#hsc_year').val();
-      let parts = [];
+      const ssc = $('#ssc_year').val(), hsc = $('#hsc_year').val(), parts = [];
       if(ssc) parts.push(`SSC – ${ssc}`);
       if(hsc) parts.push(`HSC – ${hsc}`);
       return parts.join(', ');
     }
-
-    function getPrimaryYear(){
-      const ssc = $('#ssc_year').val();
-      const hsc = $('#hsc_year').val();
-      if(ssc) return parseInt(ssc,10);
-      if(hsc) return parseInt(hsc,10);
-      return null;
-    }
-
-    function getBaseFee(year){
-      if(year === null || !isFinite(year)) return 0;
-      if(year >= 1985 && year <= 2000) return 2000;
-      if(year >= 2001 && year <= 2015) return 1500;
-      if(year >= 2016 && year <= 2025) return 1000;
-      return 0;
-    }
-
+    function getPrimaryYear(){ const ssc = $('#ssc_year').val(), hsc = $('#hsc_year').val(); return ssc ? parseInt(ssc,10) : hsc ? parseInt(hsc,10) : null; }
+    function getBaseFee(year){ if(!year) return 0; if(year>=1985&&year<=2000)return 2000; if(year>=2001&&year<=2015)return 1500; if(year>=2016&&year<=2025)return 1000; return 0; }
     function computePayable(){
-      const primaryYear = getPrimaryYear();
-      const baseLocal = getBaseFee(primaryYear);
-      const liveAbroad = document.getElementById('live_abroad_yes')?.checked;
-      const base = liveAbroad ? 5000 : baseLocal;
+      const year = getPrimaryYear(), baseLocal = getBaseFee(year);
+      const abroad = document.getElementById('live_abroad_yes')?.checked;
+      const base = abroad ? 5000 : baseLocal;
       const guests12 = parseInt($('#guest_above_12').val() || '0', 10);
-      const guestsFee = (isFinite(guests12) ? guests12 : 0) * 1000;
-      const total = base + guestsFee;
-      return { primaryYear, base, guestsFee, total };
-    }
-
-    function computeBaseUid(name, ssc, hsc, phone){
-      const year = (ssc && String(ssc).trim()) ? String(ssc).trim() : String(hsc || '').trim();
-      if(!year) return null;
-      const first3 = String(name || '').toLowerCase().replace(/[^a-z]/g,'').slice(0,3);
-      const digits = String(phone || '').replace(/\D/g,'');
-      const last4  = digits.slice(-4);
-      if(!first3 || last4.length < 4) return null;
-      return `${year}-${first3}-${last4}`;
+      const guestsFee = (isFinite(guests12)?guests12:0)*1000;
+      return { base, guestsFee, total: base+guestsFee };
     }
 
     const sumDlg = document.getElementById('paymentSummary');
@@ -372,70 +339,35 @@
     const sumBaseEl = document.getElementById('sumBase');
     const sumGuestsEl = document.getElementById('sumGuests');
     const sumTotalEl = document.getElementById('sumTotal');
-
-    function genRegistrationId(){
-      const ts = new Date();
-      const pad = n => String(n).padStart(2,'0');
-      const stamp = ts.getFullYear().toString() + pad(ts.getMonth()+1) + pad(ts.getDate()) + '-' + pad(ts.getHours()) + pad(ts.getMinutes()) + pad(ts.getSeconds());
-      const rand = Math.floor(1000 + Math.random()*9000);
-      return `EUSC-${stamp}-${rand}`;
-    }
-
     let pendingFormData = null;
 
     form.on('submit', function(e){
       e.preventDefault();
       if(!validateGuests()) return;
-
-      const primaryYear = getPrimaryYear();
-      if(primaryYear === null){
-        toastr.error('Please select at least one: SSC Year or HSC Year.');
-        return;
-      }
-
+      const year = getPrimaryYear();
+      if(!year){ toastr.error('Please select at least one: SSC Year or HSC Year.'); return; }
       const { base, guestsFee, total } = computePayable();
-      if(base === 0){
-        toastr.error('Selected year is out of the allowed range.');
-        return;
-      }
+      if(base===0){ toastr.error('Selected year is out of the allowed range.'); return; }
 
-      const regId = genRegistrationId();
+      const regId = `EUSC-${Date.now()}`;
       $('#client_reg_id').val(regId);
-
-      const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
-      sumUidEl.textContent = baseUid || '—';
-      sumBaseEl.textContent = String(base);
-      sumGuestsEl.textContent = String(guestsFee);
-      sumTotalEl.textContent = String(total);
-
       $('#payable_amount').val(String(total));
       $('#batch').val(composeBatch());
+      sumUidEl.textContent = regId; sumBaseEl.textContent = base; sumGuestsEl.textContent = guestsFee; sumTotalEl.textContent = total;
 
-      const fd = new FormData();
-      fd.append('name', $('#name').val().trim());
-      fd.append('email', $('#email').val().trim());
-      fd.append('phone', $('#phone').val().trim());
-      fd.append('batch', $('#batch').val());
-      fd.append('ssc_year', $('#ssc_year').val());
-      fd.append('hsc_year', $('#hsc_year').val());
-      fd.append('location', $('#location').val().trim());
-      fd.append('profession', $('#profession').val().trim());
-      fd.append('guests_total', $('#guests_total').val());
-      fd.append('guest_above_12', $('#guest_above_12').val());
-      fd.append('tshirt_size', $('#tshirt_size').val());
-      fd.append('payable_amount', $('#payable_amount').val());
-      fd.append('live_abroad', (document.getElementById('live_abroad_yes')?.checked) ? 'yes' : 'no');
-      if (baseUid) fd.append('client_reg_id', baseUid);
-      if(photoEl && photoEl.files && photoEl.files[0]){ fd.append('photo', photoEl.files[0]); }
+      const fd = new FormData(form[0]);
       pendingFormData = fd;
-
       sumDlg.showModal();
     });
 
     document.getElementById('cancelSummary').addEventListener('click', () => sumDlg.close());
-    document.getElementById('confirmSummary').addEventListener('click', () => {
+
+    confirmBtn.addEventListener('click', () => {
       if(!pendingFormData){ sumDlg.close(); return; }
-      const originalBtnText = submitBtn.text();
+
+      confirmBtn.disabled = true;
+      btnSpinner.classList.remove('hidden');
+      btnText.textContent = 'Submitting...';
       submitBtn.prop('disabled', true).text('Submitting…');
       saving.removeClass('hidden');
 
@@ -448,12 +380,7 @@
       })
       .done(function(resp){
         if(resp && resp.success){
-          if(resp.unique_id){
-            toastr.success(`Registration saved. Your Unique ID: ${resp.unique_id}`);
-            document.getElementById('sumUid').textContent = resp.unique_id;
-          } else {
-            toastr.success(resp.message || 'Registration saved!');
-          }
+          toastr.success(resp.message || 'Registration saved!');
           form.trigger('reset');
           photoPreview.classList.add('hidden');
           photoPreview.src = '';
@@ -465,26 +392,28 @@
       })
       .fail(function(xhr){
         if(xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors){
-          const errors = xhr.responseJSON.errors;
-          Object.keys(errors).forEach(function(key){ toastr.error(errors[key][0]); });
-        } else if (xhr.status === 419) {
-          toastr.error('Session expired (419). Please refresh the page and try again.');
+          Object.keys(xhr.responseJSON.errors).forEach(k=>toastr.error(xhr.responseJSON.errors[k][0]));
+        } else if(xhr.status===419){
+          toastr.error('Session expired (419). Please refresh and try again.');
         } else {
           toastr.error('Something went wrong. Please try again.');
         }
       })
       .always(function(){
-        submitBtn.prop('disabled', false).text(originalBtnText);
+        submitBtn.prop('disabled', false).text('Submit Registration');
         saving.addClass('hidden');
+        confirmBtn.disabled = false;
+        btnSpinner.classList.add('hidden');
+        btnText.textContent = 'Confirm & Submit';
         sumDlg.close();
         pendingFormData = null;
       });
     });
 
-    document.getElementById('resetBtn')?.addEventListener('click', () => {
+    document.getElementById('resetBtn').addEventListener('click', () => {
       photoPreview.classList.add('hidden');
       photoPreview.src = '';
-      document.getElementById('sumUid').textContent = '—';
+      sumUidEl.textContent = '—';
     });
   </script>
 </body>
