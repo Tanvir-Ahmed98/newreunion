@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
              $table->string('client_reg_id', 120)->nullable();
             $table->string('name', 120);
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone', 30)->nullable();
 
             // Reunion-specific fields

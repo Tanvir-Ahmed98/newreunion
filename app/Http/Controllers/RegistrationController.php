@@ -17,7 +17,7 @@ class RegistrationController extends Controller
         // ✅ Validate input
      $validated = $request->validate([
     'name' => 'required|string|max:255',
-    'email' => 'required|email|max:255|unique:registrations,email',
+    'email' => 'required|email|max:255',
     'phone' => 'required|string|max:30',
     'location' => 'required|string|max:255',
     'profession' => 'nullable|string|max:255',
@@ -28,8 +28,6 @@ class RegistrationController extends Controller
     'batch' => 'nullable|string|max:100',
     'payable_amount' => 'required|numeric|min:0',
     'photo' => 'nullable|image|mimes:jpeg,png|max:20480',
-], [
-    'email.unique' => 'This email has already been registered for the event.',
 ]);
 
         // ✅ Cross-field validation
