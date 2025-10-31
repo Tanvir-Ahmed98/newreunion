@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a4953ee9fd51a7d6407b42ddb5e4f805",
+    "content-hash": "4d60af972cc5a6e614daaa0ca6ae8d4f",
     "packages": [
         {
             "name": "brick/math",
@@ -3155,6 +3155,57 @@
                 "source": "https://github.com/ramsey/uuid/tree/4.9.1"
             },
             "time": "2025-09-04T20:59:21+00:00"
+        },
+        {
+            "name": "sms_net_bd/sms",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/smsnetbd/sms-net-bd-laravel.git",
+                "reference": "265206808e7dc3c0d1f47adbfc59657a1aab4320"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/smsnetbd/sms-net-bd-laravel/zipball/265206808e7dc3c0d1f47adbfc59657a1aab4320",
+                "reference": "265206808e7dc3c0d1f47adbfc59657a1aab4320",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "sms_net_bd\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "md-riaz",
+                    "email": "mdriazwd@gmail.com",
+                    "homepage": "https://github.com/md-riaz",
+                    "role": "Developer"
+                }
+            ],
+            "description": "SMS Package for Laravel - Simplify SMS integration with the SMS Gateway from sms.net.bd. Send message, check balance, get delivery reports, and manage SMS effortlessly in your Laravel applications.",
+            "homepage": "https://github.com/smsnetbd/sms-net-bd-laravel",
+            "keywords": [
+                "api",
+                "communication",
+                "gateway",
+                "laravel",
+                "message",
+                "notification",
+                "sms",
+                "sms-gateway",
+                "sms.net.bd"
+            ],
+            "support": {
+                "issues": "https://github.com/smsnetbd/sms-net-bd-laravel/issues",
+                "source": "https://github.com/smsnetbd/sms-net-bd-laravel/tree/1.0.4"
+            },
+            "time": "2024-03-24T09:33:18+00:00"
         },
         {
             "name": "symfony/console",
