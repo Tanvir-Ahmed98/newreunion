@@ -70,7 +70,11 @@ class RegistrationController extends Controller
         }
 
         // ✅ Queue the SMS (background) - optional but recommended
-      
+      try {
+    dispatch(new \App\Jobs\SendRegistrationSmsJob($registration));
+} catch (\Throwable $e) {
+    \Log::error('Failed to dispatch SMS job: ' . $e->getMessage());
+}
 
         return response()->json([
             'success'   => true,
