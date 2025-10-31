@@ -40,7 +40,7 @@ class SendRegistrationSmsJob implements ShouldQueue
             $sms->sendSMS($phone, $message);
 
         } catch (\Throwable $e) {
-            \Log::error("SMS sending failed for registration ID {$this->registration->id}: {$e->getMessage()}");
+            \Log::error("SMS sending failed for registration ID {$this->registration->phone}: {$e->getMessage()}");
         }
     }
 }
