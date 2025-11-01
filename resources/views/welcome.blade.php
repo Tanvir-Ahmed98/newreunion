@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>üéì EUSCIANS Reunion 2026 ‚Äì Registration</title>
+  <title>?? EUSCIANS Reunion 2026 ñ Registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- CSRF -->
   <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script> <!-- Toastr -->
@@ -35,7 +35,7 @@
     <div class="w-full max-w-[920px] bg-white border border-slate-200 rounded-2xl shadow-xl overflow-hidden">
       <!-- Header -->
       <div class="bg-slate-800 text-white border-b border-black/5 px-7 pt-7 pb-5 text-center">
-        <h1 class="font-black text-2xl md:text-3xl tracking-tight mb-3">üéì EUSCIANS Reunion 2026 ‚Äì Registration</h1>
+        <h1 class="font-black text-2xl md:text-3xl tracking-tight mb-3">?? EUSCIANS Reunion 2026 ñ Registration</h1>
         <p class="text-white/90 text-sm md:text-base font-semibold"> Fill in your details to confirm attendance. <span
             class="block md:inline text-base md:text-lg font-semibold">Fields marked required must be completed.</span>
         </p>
@@ -48,12 +48,12 @@
               <div> <label class="block font-bold mb-1">Fee Structure & Payment Instructions</label>
                 <div class="bg-white border border-slate-200 rounded-xl p-4 leading-6 text-slate-800">
                   <p class="font-semibold">Registration Fee:</p>
-                  <p>‚Ä¢ <strong>1985-2015:</strong> 2000 BDT</p>
-                  <p>‚Ä¢ <strong>2016-2026:</strong> 1500 BDT</p>
-                  <p>‚Ä¢ <strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
+                  <p>ï <strong>1985-2015:</strong> 2000 BDT</p>
+                  <p>ï <strong>2016-2026:</strong> 1500 BDT</p>
+                  <p>ï <strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
                   <p class="mt-2"><strong>Additional Guest age 12 and above:</strong> 1000 BDT</p>
                   <p class="mt-3 font-semibold">Payment Method: <strong>Bkash</strong></p>
-                  <p>‚Ä¢ Marchant Acc: +8801879996066 (EUSCAA)</p>
+                  <p>ï Marchant Acc: +8801879996066 (EUSCAA)</p>
                 </div>
                 <div class="text-red-600 text-sm mt-2">A unique reference number will be generated after submitting this
                   form. Use this number to pay your registration fee. Registration will not be completed without it.
@@ -72,13 +72,13 @@
               primary).</p>
             <div class="flex flex-wrap gap-5 mt-1">
               <div class="min-w-[260px] flex-1"> <label for="ssc_year" class="block font-bold mb-1">SSC Year <span
-                    class="text-slate-500 font-semibold">(1985‚Äì2026)</span></label> <select id="ssc_year"
+                    class="text-slate-500 font-semibold">(1985ñ2026)</span></label> <select id="ssc_year"
                   name="ssc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
                 </select> </div>
               <div class="min-w-[260px] flex-1"> <label for="hsc_year" class="block font-bold mb-1">HSC Year <span
-                    class="text-slate-500 font-semibold">(1998‚Äì2026)</span></label> <select id="hsc_year"
+                    class="text-slate-500 font-semibold">(1998ñ2026)</span></label> <select id="hsc_year"
                   name="hsc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
@@ -105,7 +105,7 @@
             <div class="grid grid-cols-1 gap-4">
               <div> <label for="location" class="block font-bold mb-1">Current / Permanent Location <span
                     class="text-slate-500 font-semibold">(required)</span></label> <input type="text" id="location"
-                  name="location" required placeholder="e.g., Dhaka ‚Äì Bangladesh, New York ‚Äì USA"
+                  name="location" required placeholder="e.g., Dhaka ñ Bangladesh, New York ñ USA"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
               </div>
             </div>
@@ -122,7 +122,7 @@
             <div class="grid grid-cols-1 gap-4">
               <div> <label for="profession" class="block font-bold mb-1">Profession & Institutional Affiliation</label>
                 <input type="text" id="profession" name="profession"
-                  placeholder="e.g., Doctor ‚Äì Square Hospital, Engineer ‚Äì Google"
+                  placeholder="e.g., Doctor ñ Square Hospital, Engineer ñ Google"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
               </div>
             </div>
@@ -169,7 +169,7 @@
               class="inline-flex items-center justify-center px-5 py-3 rounded-xl font-extrabold text-white bg-teal-500 shadow-lg shadow-teal-500/30 hover:brightness-95 transition">
               Submit Registration </button> <button type="reset" id="resetBtn"
               class="inline-flex items-center justify-center px-5 py-3 rounded-xl font-bold border border-slate-300 bg-white text-slate-800 hover:bg-slate-100 transition">
-              Reset </button> <span id="saving" class="text-slate-500 hidden">Saving‚Ä¶</span> </div>
+              Reset </button> <span id="saving" class="text-slate-500 hidden">SavingÖ</span> </div>
           <!-- Hidden fields --> <input type="hidden" id="batch" name="batch" /> <input type="hidden" id="client_reg_id"
             name="client_reg_id" /> <input type="hidden" id="payable_amount" name="payable_amount" />
         </form>
@@ -192,27 +192,27 @@
             <tbody>
               <tr>
                 <td class="border px-3 py-2">S</td>
-                <td class="border px-3 py-2">34‚Äì36</td>
+                <td class="border px-3 py-2">34ñ36</td>
                 <td class="border px-3 py-2">27</td>
               </tr>
               <tr>
                 <td class="border px-3 py-2">M</td>
-                <td class="border px-3 py-2">38‚Äì40</td>
+                <td class="border px-3 py-2">38ñ40</td>
                 <td class="border px-3 py-2">28</td>
               </tr>
               <tr>
                 <td class="border px-3 py-2">L</td>
-                <td class="border px-3 py-2">42‚Äì44</td>
+                <td class="border px-3 py-2">42ñ44</td>
                 <td class="border px-3 py-2">29</td>
               </tr>
               <tr>
                 <td class="border px-3 py-2">XL</td>
-                <td class="border px-3 py-2">46‚Äì48</td>
+                <td class="border px-3 py-2">46ñ48</td>
                 <td class="border px-3 py-2">30</td>
               </tr>
               <tr>
                 <td class="border px-3 py-2">XXL</td>
-                <td class="border px-3 py-2">50‚Äì52</td>
+                <td class="border px-3 py-2">50ñ52</td>
                 <td class="border px-3 py-2">31</td>
               </tr>
             </tbody>
@@ -227,14 +227,14 @@
     <div class="bg-white text-slate-800">
       <header class="px-5 py-4 border-b border-slate-200 font-extrabold">Confirm Registration & Payment Summary</header>
       <div class="p-5 space-y-2">
-        <p><strong>Registration ID:</strong> <span id="sumUid">‚Äî</span></p>
+        <p><strong>Registration ID:</strong> <span id="sumUid">ó</span></p>
         <p class="mt-2 font-semibold">Breakdown</p>
         <ul class="list-disc pl-6 leading-7">
-          <li>Base Fee: <span id="sumBase">‚Äî</span> BDT</li>
-          <li>Guests 12+ Fee: <span id="sumGuests">‚Äî</span> BDT</li>
+          <li>Base Fee: <span id="sumBase">ó</span> BDT</li>
+          <li>Guests 12+ Fee: <span id="sumGuests">ó</span> BDT</li>
         </ul>
-        <p class="mt-2 text-lg"><strong>Total Payable:</strong> <span id="sumTotal">‚Äî</span> BDT</p>
-        <div class="text-slate-500 text-sm mt-1">Click ‚ÄúConfirm & Submit‚Äù to save your registration.</div>
+        <p class="mt-2 text-lg"><strong>Total Payable:</strong> <span id="sumTotal">ó</span> BDT</p>
+        <div class="text-slate-500 text-sm mt-1">Click ìConfirm & Submitî to save your registration.</div>
       </div>
       <div class="px-5 py-3 border-t border-slate-200 flex justify-end gap-2"> <button id="cancelSummary"
           class="px-4 py-2 rounded-lg border border-slate-300 bg-white hover:bg-slate-100">Back</button> <button
@@ -289,7 +289,7 @@
     }
     function composeBatch() {
       const ssc = $('#ssc_year').val(), hsc = $('#hsc_year').val(), a = [];
-      if (ssc) a.push(`SSC ‚Äì ${ssc}`); if (hsc) a.push(`HSC ‚Äì ${hsc}`); return a.join(', ');
+      if (ssc) a.push(`SSC ñ ${ssc}`); if (hsc) a.push(`HSC ñ ${hsc}`); return a.join(', ');
     }
     function getPrimaryYear() { const s = $('#ssc_year').val(), h = $('#hsc_year').val(); return s ? parseInt(s, 10) : h ? parseInt(h, 10) : null; }
     function getBaseFee(y) { if (!y) return 0; if (y >= 1985 && y <= 2000) return 2000; if (y >= 2001 && y <= 2015) return 1500; if (y >= 2016 && y <= 2025) return 1000; return 0; }
@@ -330,7 +330,7 @@
       const year = getPrimaryYear(); if (!year) { toastr.error('Select SSC or HSC year.'); return; }
       const { base, guestsFee, total } = computePayable(); if (base === 0) { toastr.error('Selected year invalid.'); return; }
 
-      // üîπ use old unique id logic
+      // ?? use old unique id logic
       const regId = genRegistrationId();
       const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
       const fullPhone = `880${$('#phone').val().trim()}`;
@@ -355,7 +355,7 @@
     confirmBtn.onclick = () => {
       if (!pendingFormData) { sumDlg.close(); return; }
       confirmBtn.disabled = true; btnSpinner.classList.remove('hidden'); btnText.textContent = 'Submitting...';
-      submitBtn.prop('disabled', true).text('Submitting‚Ä¶'); saving.removeClass('hidden');
+      submitBtn.prop('disabled', true).text('SubmittingÖ'); saving.removeClass('hidden');
       $.ajax({ url: "{{ route('registrations.store') }}", method: "POST", data: pendingFormData, contentType: false, processData: false })
         .done(resp => {
           if (resp?.success) { toastr.success(resp.message || 'Registration saved!'); form.trigger('reset'); photoPreview.classList.add('hidden'); photoPreview.src = ''; }
@@ -373,7 +373,7 @@
         });
     };
 
-    document.getElementById('resetBtn').onclick = () => { photoPreview.classList.add('hidden'); photoPreview.src = ''; sumUidEl.textContent = '‚Äî'; };
+    document.getElementById('resetBtn').onclick = () => { photoPreview.classList.add('hidden'); photoPreview.src = ''; sumUidEl.textContent = 'ó'; };
   </script>
 </body>
 
