@@ -13,6 +13,20 @@
     dialog::backdrop {
       background: rgba(0, 0, 0, .35);
     }
+    .input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.input-wrapper span.prefix {
+  position: absolute;
+  left: 14px;
+  font-weight: 600;
+  color: #475569;
+}
+.input-wrapper input {
+  padding-left: 65px !important;
+}
   </style>
 </head>
 
@@ -71,11 +85,16 @@
                 </select> </div>
             </div>
             <div class="grid md:grid-cols-2 gap-4">
-              <div> <label for="phone" class="block font-bold mb-1">Phone Number <span
-                    class="text-slate-500 font-semibold">(required)</span></label> <input type="tel" id="phone"
-                  name="phone" required placeholder="+8801XXXXXXXXX" inputmode="tel"
-                  class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
-                <div class="text-slate-500 text-sm mt-1">Include country code if outside Bangladesh.</div>
+              <div> 
+               <label for="phone" class="block font-bold mb-1">
+  Phone Number <span class="text-slate-500 font-semibold">(required)</span>
+</label>
+<div class="input-wrapper">
+  <span class="prefix">+880</span>
+  <input type="tel" id="phone" name="phone" required placeholder="1871752332" inputmode="tel"
+    class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
+</div>
+<div class="text-slate-500 text-sm mt-1">Write without +880 (e.g., 1871752332)</div>
               </div>
               <div> <label for="email" class="block font-bold mb-1">Email Address <span
                     class="text-slate-500 font-semibold">(required)</span></label> <input type="email" id="email"
@@ -306,6 +325,7 @@
     // === Submit handler ===
     form.on('submit', function (e) {
       e.preventDefault();
+     
       if (!validateGuests()) return;
       const year = getPrimaryYear(); if (!year) { toastr.error('Select SSC or HSC year.'); return; }
       const { base, guestsFee, total } = computePayable(); if (base === 0) { toastr.error('Selected year invalid.'); return; }
@@ -313,7 +333,8 @@
       // 🔹 use old unique id logic
       const regId = genRegistrationId();
       const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
-
+      const fullPhone = `880${$('#phone').val().trim()}`;
+      $('#phone').val(fullPhone); 
       $('#client_reg_id').val(baseUid || regId);
       $('#payable_amount').val(total);
       $('#batch').val(composeBatch());

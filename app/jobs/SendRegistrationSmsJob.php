@@ -31,16 +31,21 @@ class SendRegistrationSmsJob implements ShouldQueue
     {
         try {
             $phone = $this->registration->phone;
-            $name = $this->registration->name;
+            $name  = $this->registration->name;
 
-            $message = "Dear {$name}, your registration for the Reunion event is successful! 🎉 Thank you for joining.";
+            // ✅ Build your message
+            $message = "Hello {$name}, your registration was successful!";
 
             // ✅ Using sms_net_bd\SMS
             $sms = new SMS();
-            $sms->sendSMS($phone, $message);
+
+            // ✅ Correct order: (message, recipients)
+            $sms->sendSMS($message, $phone);
+
+            \Log::info("✅ SMS sent successfully to {$phone}");
 
         } catch (\Throwable $e) {
-            \Log::error("SMS sending failed for registration ID {$this->registration->phone}: {$e->getMessage()}");
+            \Log::error("❌ SMS sending failed for {$this->registration->phone}: {$e->getMessage()}");
         }
     }
 }
