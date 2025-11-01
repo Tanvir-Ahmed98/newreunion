@@ -32,14 +32,18 @@ class SendRegistrationSmsJob implements ShouldQueue
         try {
             $phone = $this->registration->phone;
             $name  = $this->registration->name;
+            $refId = $this->registration->client_reg_id ?? 'N/A';
 
-            // ✅ Build your message
-            $message = "Hello {$name}, your registration was successful!";
+            // ✅ Build message (properly quoted)
+            $message = "Dear {$name}, your registration for EUSCIANS Reunion 2026 is successful!\n\n"
+                     . "Please pay *2000 BDT* via bKash (Merchant: 01879996066) "
+                     . "using reference: {$refId} to confirm your registration.\n\n"
+                     . "Helpline: 01734442666\nEUSCAA Organizing Committee";
 
             // ✅ Using sms_net_bd\SMS
             $sms = new SMS();
 
-            // ✅ Correct order: (message, recipients)
+            // ✅ Send SMS (order: message, recipient)
             $sms->sendSMS($message, $phone);
 
             \Log::info("✅ SMS sent successfully to {$phone}");
