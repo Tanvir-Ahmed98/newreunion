@@ -48,12 +48,12 @@
               <div> <label class="block font-bold mb-1">Fee Structure & Payment Instructions</label>
                 <div class="bg-white border border-slate-200 rounded-xl p-4 leading-6 text-slate-800">
                   <p class="font-semibold">Registration Fee:</p>
-                  <p>. <strong>1985-2015:</strong> 2000 BDT</p>
-                  <p>. <strong>2016-2026:</strong> 1500 BDT</p>
-                  <p>. <strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
+                  <p>👉  <strong>1985-2015:</strong> 2000 BDT</p>
+                  <p>👉<strong>2016-2026:</strong> 1500 BDT</p>
+                  <p>👉<strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
                   <p class="mt-2"><strong>Additional Guest age 12 and above:</strong> 1000 BDT</p>
                   <p class="mt-3 font-semibold">Payment Method: <strong>Bkash</strong></p>
-                  <p>. Marchant Acc: +8801879996066 (EUSCAA)</p>
+                  <p>💳 Marchant Acc: +8801879996066 (EUSCAA)</p>
                 </div>
                 <div class="text-red-600 text-sm mt-2">A unique reference number will be generated after submitting this
                   form. Use this number to pay your registration fee. Registration will not be completed without it.
@@ -72,13 +72,13 @@
               primary).</p>
             <div class="flex flex-wrap gap-5 mt-1">
               <div class="min-w-[260px] flex-1"> <label for="ssc_year" class="block font-bold mb-1">SSC Year <span
-                    class="text-slate-500 font-semibold">(1985,2026)</span></label> <select id="ssc_year"
+                    class="text-slate-500 font-semibold">(1985-2026)</span></label> <select id="ssc_year"
                   name="ssc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
                 </select> </div>
               <div class="min-w-[260px] flex-1"> <label for="hsc_year" class="block font-bold mb-1">HSC Year <span
-                    class="text-slate-500 font-semibold">(1998,2026)</span></label> <select id="hsc_year"
+                    class="text-slate-500 font-semibold">(1998-2026)</span></label> <select id="hsc_year"
                   name="hsc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
