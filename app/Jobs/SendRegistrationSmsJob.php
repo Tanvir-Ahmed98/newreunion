@@ -36,7 +36,7 @@ class SendRegistrationSmsJob implements ShouldQueue
 
             // ✅ Build message (properly quoted)
             $message = "Dear {$name}, your registration for EUSCIANS Reunion 2026 is successful!\n\n"
-                     . "Please pay *2000 BDT* via bKash (Merchant: 01879996066) "
+                     . "Please pay 2000 BDT via bKash (Merchant: 01879996066) "
                      . "using reference: {$refId} to confirm your registration.\n\n"
                      . "Helpline: 01734442666\nEUSCAA Organizing Committee";
 
