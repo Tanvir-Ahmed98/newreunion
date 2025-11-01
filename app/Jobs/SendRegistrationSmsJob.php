@@ -30,17 +30,24 @@ class SendRegistrationSmsJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $phone = $this->registration->phone;
-            $name = $this->registration->name;
+            $phone          = $this->registration->phone;
+            $name           = $this->registration->name;
+            $amount         = $this->registration->payable_amount;
+            $referenceId    = $this->registration->client_reg_id;
 
-            $message = "Dear {$name}, your registration for the Reunion event is successful! 🎉 Thank you for joining.";
+            // ? Personalized message using real model fields
+            $message = "Dear EUSCIANS,"
+                     . "Please pay {$amount} BDT via bKash(01879996066) with ref:{$referenceId}. "
+                     . "to confirm your Reunion 2026 registration. Helpline: 01734442666";
 
-            // ✅ Using sms_net_bd\SMS
+            // ? Send SMS via sms_net_bd\SMS
             $sms = new SMS();
-            $sms->sendSMS($phone, $message);
+            $sms->sendSMS($message, $phone);
+
+            \Log::info("? SMS sent to {$phone} for registration ID {$referenceId}");
 
         } catch (\Throwable $e) {
-            \Log::error("SMS sending failed for registration ID {$this->registration->id}: {$e->getMessage()}");
+            \Log::error("? SMS sending failed for {$this->registration->phone}: {$e->getMessage()}");
         }
     }
 }
