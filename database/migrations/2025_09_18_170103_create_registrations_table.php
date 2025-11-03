@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('batch')->nullable(); // e.g. "SSC – 1985, HSC – 1990"
             $table->string('location')->nullable();
             $table->string('profession')->nullable();
+             $table->string('blood_group', 5)->nullable();
             $table->string('payable_amount')->nullable();
             // Guest counts
             $table->unsignedTinyInteger('guests_total')->default(0); // 0..5 (5 means 5+)

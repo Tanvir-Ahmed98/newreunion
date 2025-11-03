@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
- <title>🎓 EUSCIANS Reunion 2026 – Registration</title>
+  <title>🎓 EUSCIANS Reunion 2026 – Registration</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- CSRF -->
   <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Tailwind (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script> <!-- Toastr -->
@@ -13,20 +13,23 @@
     dialog::backdrop {
       background: rgba(0, 0, 0, .35);
     }
+
     .input-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.input-wrapper span.prefix {
-  position: absolute;
-  left: 14px;
-  font-weight: 600;
-  color: #475569;
-}
-.input-wrapper input {
-  padding-left: 65px !important;
-}
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper span.prefix {
+      position: absolute;
+      left: 14px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .input-wrapper input {
+      padding-left: 65px !important;
+    }
   </style>
 </head>
 
@@ -48,18 +51,20 @@
               <div> <label class="block font-bold mb-1">Fee Structure & Payment Instructions</label>
                 <div class="bg-white border border-slate-200 rounded-xl p-4 leading-6 text-slate-800">
                   <p class="font-semibold">Registration Fee:</p>
-                  <p>👉  <strong>1985-2015:</strong> 2000 BDT</p>
-                  <p>👉<strong>2016-2026:</strong> 1500 BDT</p>
+                  <p>👉 <strong>1985-2015:</strong> 1500 BDT</p>
+                  <p>👉<strong>2016-2026:</strong> 1000 BDT</p>
                   <p>👉<strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
                   <p class="mt-2"><strong>Additional Guest age 12 and above:</strong> 1000 BDT</p>
-                  <p class="mt-3 font-semibold">Payment Method: <strong>Bkash</strong></p>
-                  <p>💳 Marchant Acc: +8801879996066 (EUSCAA)</p>
-                </div>
-                <div class="text-red-600 text-sm mt-2">A unique reference number will be generated after submitting this
-                  form. Use this number to pay your registration fee. Registration will not be completed without it.
+                  <p class="mt-3 font-semibold">Payment Method: <strong>bKash</strong></p>
+                  <p>💳 Merchant Account: +8801879996066 (EUSCAA)</p>
+                  <div class="text-slate-600 text-sm mt-2">
+                    Please include your reference ID (from your email/SMS) when making the payment.
+                  </div>
+                  <div class="text-slate-600 text-sm mt-2">
+                    If you have any questions, feel free to contact euscians@gmail.com
+                  </div>
                 </div>
               </div>
-            </div>
           </section> <!-- Basic info -->
           <section class="border border-slate-200 rounded-xl bg-slate-50 p-5 space-y-5">
             <div class="grid grid-cols-1 gap-4">
@@ -72,29 +77,29 @@
               primary).</p>
             <div class="flex flex-wrap gap-5 mt-1">
               <div class="min-w-[260px] flex-1"> <label for="ssc_year" class="block font-bold mb-1">SSC Year <span
-                    class="text-slate-500 font-semibold">(1985-2026)</span></label> <select id="ssc_year"
+                    class="text-slate-500 font-semibold">(1985-2015)</span></label> <select id="ssc_year"
                   name="ssc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
                 </select> </div>
               <div class="min-w-[260px] flex-1"> <label for="hsc_year" class="block font-bold mb-1">HSC Year <span
-                    class="text-slate-500 font-semibold">(1998-2026)</span></label> <select id="hsc_year"
+                    class="text-slate-500 font-semibold">(2016-2026)</span></label> <select id="hsc_year"
                   name="hsc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
                 </select> </div>
             </div>
             <div class="grid md:grid-cols-2 gap-4">
-              <div> 
-               <label for="phone" class="block font-bold mb-1">
-  Phone Number <span class="text-slate-500 font-semibold">(required)</span>
-              </label>
-              <div class="input-wrapper">
-                <span class="prefix">+880</span>
-                <input type="tel" id="phone" name="phone" required placeholder="1XXXXXXXX" inputmode="tel"
-                  class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
-              </div>
-              <div class="text-slate-500 text-sm mt-1">Write without +880 (e.g., 1XXXXXXXXX)</div>
+              <div>
+                <label for="phone" class="block font-bold mb-1">
+                  Phone Number <span class="text-slate-500 font-semibold">(required)</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="prefix">+880</span>
+                  <input type="tel" id="phone" name="phone" required placeholder="1XXXXXXXX" inputmode="tel"
+                    class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
+                </div>
+                <div class="text-slate-500 text-sm mt-1">Write without +880 (e.g., 1XXXXXXXXX)</div>
               </div>
               <div> <label for="email" class="block font-bold mb-1">Email Address <span
                     class="text-slate-500 font-semibold">(required)</span></label> <input type="email" id="email"
@@ -124,6 +129,23 @@
                 <input type="text" id="profession" name="profession"
                   placeholder="e.g., Doctor , Square Hospital, Engineer , Google"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
+              </div>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+              <div>
+                <label for="blood_group" class="block font-bold mb-1">Blood Group <span class="text-slate-500 font-semibold"></span></label>
+                <select id="blood_group" name="blood_group" required
+                  class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
+                  <option value="">-- Select Blood Group --</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A−</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B−</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB−</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O−</option>
+                </select>
               </div>
             </div>
             <div class="flex flex-wrap gap-5">
@@ -159,7 +181,8 @@
                     accept="image/jpeg,image/png"
                     class="block w-full md:w-auto bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:bg-slate-100 file:text-slate-700 file:text-sm file:font-semibold hover:file:bg-slate-200" />
                   <img id="photoPreview" alt=""
-                    class="w-10 h-10 rounded-lg object-cover border border-slate-300 hidden" /> </div>
+                    class="w-10 h-10 rounded-lg object-cover border border-slate-300 hidden" />
+                </div>
                 <div class="text-slate-500 text-sm mt-1">Used for the reunion directory, ID card, and event displays.
                 </div>
               </div>
@@ -266,7 +289,8 @@
       const el = document.getElementById(id);
       for (let y = end; y >= start; y--) { const o = document.createElement('option'); o.value = y; o.textContent = y; el.appendChild(o); }
     }
-    fillYearRange('ssc_year', 1985, 2026); fillYearRange('hsc_year', 1998, 2026);
+    fillYearRange('ssc_year', 1985, 2015); 
+    fillYearRange('hsc_year', 2016, 2026);
 
     // === Size chart modal ===
     const dlgSize = document.getElementById('sizeChart');
@@ -292,7 +316,13 @@
       if (ssc) a.push(`SSC , ${ssc}`); if (hsc) a.push(`HSC , ${hsc}`); return a.join(', ');
     }
     function getPrimaryYear() { const s = $('#ssc_year').val(), h = $('#hsc_year').val(); return s ? parseInt(s, 10) : h ? parseInt(h, 10) : null; }
-    function getBaseFee(y) { if (!y) return 0; if (y >= 1985 && y <= 2000) return 2000; if (y >= 2001 && y <= 2015) return 1500; if (y >= 2016 && y <= 2025) return 1000; return 0; }
+    function getBaseFee(y) {
+      if (!y) return 0;
+      if (y >= 1985 && y <= 2015) return 1500;
+      if (y >= 2016 && y <= 2026) return 1000;
+      return 0;
+    }
+
     function computePayable() {
       const y = getPrimaryYear(), baseLocal = getBaseFee(y), ab = document.getElementById('live_abroad_yes')?.checked;
       const base = ab ? 5000 : baseLocal, g12 = parseInt($('#guest_above_12').val() || '0', 10), gFee = (isFinite(g12) ? g12 : 0) * 1000;
@@ -325,7 +355,7 @@
     // === Submit handler ===
     form.on('submit', function (e) {
       e.preventDefault();
-     
+
       if (!validateGuests()) return;
       const year = getPrimaryYear(); if (!year) { toastr.error('Select SSC or HSC year.'); return; }
       const { base, guestsFee, total } = computePayable(); if (base === 0) { toastr.error('Selected year invalid.'); return; }
@@ -334,7 +364,7 @@
       const regId = genRegistrationId();
       const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
       const fullPhone = `880${$('#phone').val().trim()}`;
-      $('#phone').val(fullPhone); 
+      $('#phone').val(fullPhone);
       $('#client_reg_id').val(baseUid || regId);
       $('#payable_amount').val(total);
       $('#batch').val(composeBatch());

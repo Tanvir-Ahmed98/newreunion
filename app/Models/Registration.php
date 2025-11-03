@@ -13,6 +13,7 @@ class Registration extends Model
         'phone',
         'location',
         'profession',
+         'blood_group', 
         'batch',
         'guests_total',
         'guest_above_12',
