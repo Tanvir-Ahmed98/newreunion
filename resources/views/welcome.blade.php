@@ -57,10 +57,10 @@
                   <p class="mt-2"><strong>Additional Guest age 12 and above:</strong> 1000 BDT</p>
                   <p class="mt-3 font-semibold">Payment Method: <strong>bKash</strong></p>
                   <p>💳 Merchant Account: +8801879996066 (EUSCAA)</p>
-                  <div class="text-slate-600 text-sm mt-2">
+                  <div class="text-red-600 text-sm mt-2">
                     Please include your reference ID (from your email/SMS) when making the payment.
                   </div>
-                  <div class="text-slate-600 text-sm mt-2">
+                  <div class="text-red-600 text-sm mt-2">
                     If you have any questions, feel free to contact euscians@gmail.com
                   </div>
                 </div>
