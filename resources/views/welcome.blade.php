@@ -134,7 +134,7 @@
             <div class="grid grid-cols-1 gap-4">
               <div>
                 <label for="blood_group" class="block font-bold mb-1">Blood Group <span class="text-slate-500 font-semibold"></span></label>
-                <select id="blood_group" name="blood_group" required
+                <select id="blood_group" name="blood_group"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select Blood Group --</option>
                   <option value="A+">A+</option>
