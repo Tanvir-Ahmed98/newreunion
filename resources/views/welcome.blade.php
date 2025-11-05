@@ -392,9 +392,10 @@
           else if (resp?.message) { toastr.info(resp.message); } else { toastr.info('Request completed.'); }
         })
         .fail(xhr => {
-          if (xhr.status === 422 && xhr.responseJSON?.errors) { Object.values(xhr.responseJSON.errors).forEach(e => toastr.error(e[0])); }
-          else if (xhr.status === 419) { toastr.error('Session expired. Please refresh.'); }
-          else { toastr.error('Something went wrong.'); }
+         console.error('AJAX error', xhr.status, xhr.responseText);
+          if (xhr.status === 403) toastr.error('Forbidden – check CSRF token or permissions.');
+          else if (xhr.status === 419) toastr.error('Session expired – refresh and try again.');
+          else toastr.error('Something went wrong.');
         })
         .always(() => {
           submitBtn.prop('disabled', false).text('Submit Registration'); saving.addClass('hidden');
