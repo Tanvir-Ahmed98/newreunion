@@ -20,6 +20,7 @@ class Registration extends Model
         'tshirt_size',
         'client_reg_id',
         'payable_amount', // ✅ correct field name
+         'eusCAA_contribution',
         'photo_path',
     ];
 

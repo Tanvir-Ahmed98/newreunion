@@ -27,6 +27,8 @@ return new class extends Migration
             // Guest counts
             $table->unsignedTinyInteger('guests_total')->default(0); // 0..5 (5 means 5+)
             $table->unsignedTinyInteger('guest_above_12')->default(0);
+            $table->enum('eusCAA_contribution', ['yes', 'no'])->nullable()
+                  ->comment('Whether the alumnus chose to make a contribution to EUSCAA');
 
             // Other info
             $table->enum('tshirt_size', ['S','M','L','XL','XXL'])->nullable();
