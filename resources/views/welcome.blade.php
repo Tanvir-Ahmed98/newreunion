@@ -58,16 +58,19 @@
                 <p>👉 <strong>Alumni (Batch 2016–2026):</strong> 1000 BDT</p>
                 <p>👉 <strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
                 <p>👉 <strong>Additional Guest (Age 12+):</strong> 1000 BDT</p>
-
+                <!-- <p>👉<strong> Driver:</strong> 500 BDT</p> -->
                 <p class="mt-3 font-semibold">💳 Payment Methods:</p>
                 <ul class="list-disc ml-5">
-                  <li>
+                  <!-- <li>
                     <strong>bKash (Merchant Account):</strong> +8801879996066 (EUSCAA)
                     <br>
                     <span class="text-red-600 text-sm">
                      Select <b>Make Payment</b> option and include your reference ID (from your email/SMS) when making the payment.
                     </span>
-                  </li>
+                  </li> -->
+                  <strong>bKash (Personal Account): +8801819129519 (Syed Ishtiaq Ahmad)</strong>
+ <span class="text-red-600 text-sm">Select <b>Send Money</b> option and include your reference ID (from your email/sms) when making the payment.</span>
+
                   <li class="mt-2">
                     <strong>Bank Account:</strong>
                     <br>Sonali Bank PLC (B.U.E.T Branch)
