@@ -73,6 +73,7 @@
 
                   <li class="mt-2">
                     <strong>Bank Account:</strong>
+                    <br>Engineering University School and College Alumni A
                     <br>Sonali Bank PLC (B.U.E.T Branch)
                     <br><strong>Branch Code:</strong> 44040
                     <br><strong>Account Number:</strong> 4404001029291

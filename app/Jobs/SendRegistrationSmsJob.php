@@ -33,11 +33,12 @@ class SendRegistrationSmsJob implements ShouldQueue
             $phone = $this->registration->phone;
             $name  = $this->registration->name;
             $refId = $this->registration->client_reg_id ?? 'N/A';
+            $amount = $this->registration->payable_amount ?? '0';
 
-            // ✅ Build message (properly quoted)
+            // ✅ Build dynamic SMS message
             $message = "Dear {$name}, your registration for EUSCIANS Reunion 2026 is successful!\n\n"
-                     . "Please pay 2000 BDT via bKash (Merchant: 01879996066) "
-                     . "using reference: {$refId} to confirm your registration.\n\n"
+                     . "Please pay {$amount} BDT via bKash (Personal Account: +8801819129519 – Syed Ishtiaq Ahmad) "
+                     . "using reference ID: {$refId} to confirm your registration.\n\n"
                      . "Helpline: 01734442666\nEUSCAA Organizing Committee";
 
             // ✅ Using sms_net_bd\SMS
