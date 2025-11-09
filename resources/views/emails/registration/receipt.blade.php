@@ -16,7 +16,6 @@ We’ve received your registration for the **EUSCAA Reunion**.
 - **Profession:** {{ $registration->profession ?? 'N/A' }}
 - **Batch:** {{ $registration->batch ?? 'N/A' }}
 - **Guests (Total):** {{ (int) $registration->guests_total }}
-- **Guests (12+):** {{ (int) $registration->guest_above_12 }}
 - **T-shirt Size:** {{ $registration->tshirt_size ?? 'N/A' }}
 
 ## Payment

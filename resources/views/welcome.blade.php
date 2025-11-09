@@ -46,49 +46,52 @@
       <div class="p-6 md:p-7">
         <form id="regForm" autocomplete="off" enctype="multipart/form-data" class="space-y-6">
           <!-- Fee & Payment info -->
-         <section class="border border-slate-200 rounded-xl bg-slate-50 p-5">
-          <div class="grid grid-cols-1 gap-4">
-            <div>
-              <label class="block font-bold mb-1">📋 Registration Process & Payment Instructions</label>
-              <div class="bg-white border border-slate-200 rounded-xl p-4 leading-6 text-slate-800">
-                <p>Please ensure that all information provided is accurate. Your contact information is required to send the registration confirmation.</p>
+          <section class="border border-slate-200 rounded-xl bg-slate-50 p-5">
+            <div class="grid grid-cols-1 gap-4">
+              <div>
+                <label class="block font-bold mb-1">📋 Registration Process & Payment Instructions</label>
+                <div class="bg-white border border-slate-200 rounded-xl p-4 leading-6 text-slate-800">
+                  <p>Please ensure that all information provided is accurate. Your contact information is required to
+                    send the registration confirmation.</p>
 
-                <p class="mt-3 font-semibold">💰 Registration Fees:</p>
-                <p>👉 <strong>Alumni (Batch 1985–2015):</strong> 1500 BDT</p>
-                <p>👉 <strong>Alumni (Batch 2016–2026):</strong> 1000 BDT</p>
-                <p>👉 <strong>Foreign Alumni:</strong> 5000 BDT (Souvenir will be shipped to you)</p>
-                <p>👉 <strong>Additional Guest (Age 12+):</strong> 1000 BDT</p>
-                <!-- <p>👉<strong> Driver:</strong> 500 BDT</p> -->
-                <p class="mt-3 font-semibold">💳 Payment Methods:</p>
-                <ul class="list-disc ml-5">
-                  <!-- <li>
+                  <p class="mt-3 font-semibold">💰 Registration Fees:</p>
+                  <p>👉 <strong>Alumni (Batch 1985–2015) : </strong> 1500 BDT</p>
+                  <p>👉 <strong>Alumni (Batch 2016–2026) : </strong> 1000 BDT</p>
+                  <p>👉 <strong>Foreign Alumni : </strong> 5000 BDT (Souvenir will be shipped to you)</p>
+                  <p>👉 <strong>Additional Guest : </strong> 1000 BDT</p>
+                  <!-- <p>👉<strong> Driver:</strong> 500 BDT</p> -->
+                  <p class="mt-3 font-semibold">💳 Payment Methods:</p>
+                  <ul class="list-disc ml-5">
+                    <li>
                     <strong>bKash (Merchant Account):</strong> +8801879996066 (EUSCAA)
                     <br>
                     <span class="text-red-600 text-sm">
                      Select <b>Make Payment</b> option and include your reference ID (from your email/SMS) when making the payment.
                     </span>
-                  </li> -->
-                  <strong>bKash (Personal Account): +8801819129519 (Syed Ishtiaq Ahmad)</strong>
- <span class="text-red-600 text-sm">Select <b>Send Money</b> option and include your reference ID (from your email/sms) when making the payment.</span>
-
-                  <li class="mt-2">
-                    <strong>Bank Account:</strong>
-                    <br>Engineering University School and College Alumni A
-                    <br>Sonali Bank PLC (B.U.E.T Branch)
-                    <br><strong>Branch Code:</strong> 44040
-                    <br><strong>Account Number:</strong> 4404001029291
-                    <br><strong>Routing Number:</strong> 200270522
                   </li>
-                </ul>
+                    <!-- <strong>bKash (Personal Account): +8801819129519 (Syed Ishtiaq Ahmad)</strong>
+                    <span class="text-red-600 text-sm">Select <b>Send Money</b> option and include your reference ID
+                      (from your email/sms) when making the payment.</span> -->
 
-                <div class="text-red-600 text-sm mt-3">
-                  If you have any questions, feel free to contact <a href="mailto:euscians@gmail.com" class="underline text-blue-600">euscians@gmail.com</a>
+                    <li class="mt-2">
+                      <strong>Bank Account:</strong>
+                      <br>Engineering University School and College Alumni A
+                      <br>Sonali Bank PLC (B.U.E.T Branch)
+                      <br><strong>Branch Code:</strong> 44040
+                      <br><strong>Account Number:</strong> 4404001029291
+                      <br><strong>Routing Number:</strong> 200270522
+                    </li>
+                  </ul>
+
+                  <div class="text-red-600 text-sm mt-3">
+                    If you have any questions, feel free to contact <a href="mailto:euscians@gmail.com"
+                      class="underline text-blue-600">euscians@gmail.com</a>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
- 
+          </section>
+
           <!-- Basic info -->
           <section class="border border-slate-200 rounded-xl bg-slate-50 p-5 space-y-5">
             <div class="grid grid-cols-1 gap-4">
@@ -157,7 +160,8 @@
             </div>
             <div class="grid grid-cols-1 gap-4">
               <div>
-                <label for="blood_group" class="block font-bold mb-1">Blood Group <span class="text-slate-500 font-semibold"></span></label>
+                <label for="blood_group" class="block font-bold mb-1">Blood Group <span
+                    class="text-slate-500 font-semibold"></span></label>
                 <select id="blood_group" name="blood_group"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select Blood Group --</option>
@@ -178,11 +182,11 @@
                   value="0" inputmode="numeric"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
               </div>
-              <div class="min-w-[260px] flex-1"> <label for="guest_above_12" class="block font-bold mb-1">Guests aged
+              <!-- <div class="min-w-[260px] flex-1"> <label for="guest_above_12" class="block font-bold mb-1">Guests aged
                   12+ <span class="text-slate-500 font-semibold">(required)</span></label> <input type="number"
                   id="guest_above_12" name="guest_above_12" min="0" value="0" required inputmode="numeric"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
-              </div>
+              </div> -->
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div> <label for="tshirt_size" class="block font-bold mb-1">Preferred T-Shirt Size</label> <select
@@ -194,6 +198,8 @@
                   <option value="L">L</option>
                   <option value="XL">XL</option>
                   <option value="XXL">XXL</option>
+                  <option value="XXXL">XXXL</option>
+                  <option value="4XL">4XL</option>
                 </select>
                 <div class="text-slate-500 text-sm mt-1">Please check the <span id="openSizeChart"
                     class="underline text-teal-600 cursor-pointer">size chart</span> before selecting.</div>
@@ -203,16 +209,19 @@
               <div>
                 <label class="block font-bold mb-1">
                   EUSCAA sincerely appreciates your support for our various welfare initiatives.<br>
-                  Would you like to make a contribution to EUSCAA? 
+                  Would you like to make a contribution to EUSCAA?
                   <span class="text-slate-500 font-semibold"></span>
                 </label>
-                <div role="radiogroup" aria-label="Would you like to make a contribution to EUSCAA?" class="flex flex-wrap gap-4 mt-1">
+                <div role="radiogroup" aria-label="Would you like to make a contribution to EUSCAA?"
+                  class="flex flex-wrap gap-4 mt-1">
                   <label class="inline-flex items-center gap-2">
-                    <input type="radio" name="eusCAA_contribution" id="eusCAA_contribution_yes" value="yes" class="accent-teal-500">
+                    <input type="radio" name="eusCAA_contribution" id="eusCAA_contribution_yes" value="yes"
+                      class="accent-teal-500">
                     <span>Yes</span>
                   </label>
                   <label class="inline-flex items-center gap-2">
-                    <input type="radio" name="eusCAA_contribution" id="eusCAA_contribution_no" value="no" class="accent-teal-500">
+                    <input type="radio" name="eusCAA_contribution" id="eusCAA_contribution_no" value="no"
+                      class="accent-teal-500">
                     <span>No</span>
                   </label>
                 </div>
@@ -281,6 +290,16 @@
                 <td class="border px-3 py-2">50-52</td>
                 <td class="border px-3 py-2">31</td>
               </tr>
+              <tr>
+              <td class="border px-3 py-2">XXXL</td>
+              <td class="border px-3 py-2">54-56</td>
+              <td class="border px-3 py-2">32</td>
+            </tr>
+            <tr>
+              <td class="border px-3 py-2">4XL</td>
+              <td class="border px-3 py-2">58-60</td>
+              <td class="border px-3 py-2">33</td>
+            </tr>
             </tbody>
           </table>
         </div>
@@ -297,7 +316,7 @@
         <p class="mt-2 font-semibold">Breakdown</p>
         <ul class="list-disc pl-6 leading-7">
           <li>Base Fee: <span id="sumBase">,</span> BDT</li>
-          <li>Guests 12+ Fee: <span id="sumGuests">,</span> BDT</li>
+           <li>Guests Fee: <span id="sumGuests">,</span> BDT</li>
         </ul>
         <p class="mt-2 text-lg"><strong>Total Payable:</strong> <span id="sumTotal">,</span> BDT</p>
         <div class="text-slate-500 text-sm mt-1">Click ,Confirm & Submit, to save your registration.</div>
@@ -319,231 +338,237 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-<script>
-  toastr.options = { closeButton: true, progressBar: true, newestOnTop: true, positionClass: "toast-top-right", timeOut: 3000 };
-  $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content } });
+  <script>
+    toastr.options = { closeButton: true, progressBar: true, newestOnTop: true, positionClass: "toast-top-right", timeOut: 3000 };
+    $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content } });
 
-  const form = $('#regForm'), submitBtn = $('#submitBtn'), saving = $('#saving');
-  const photoEl = document.getElementById('photo'), photoPreview = document.getElementById('photoPreview');
-  const confirmBtn = document.getElementById('confirmSummary'), btnSpinner = document.getElementById('btnSpinner'), btnText = confirmBtn.querySelector('.btn-text');
+    const form = $('#regForm'), submitBtn = $('#submitBtn'), saving = $('#saving');
+    const photoEl = document.getElementById('photo'), photoPreview = document.getElementById('photoPreview');
+    const confirmBtn = document.getElementById('confirmSummary'), btnSpinner = document.getElementById('btnSpinner'), btnText = confirmBtn.querySelector('.btn-text');
 
-  // === Fill year dropdowns ===
-  function fillYearRange(id, start, end) {
-    const el = document.getElementById(id);
-    for (let y = end; y >= start; y--) {
-      const o = document.createElement('option');
-      o.value = y;
-      o.textContent = y;
-      el.appendChild(o);
+    // === Fill year dropdowns ===
+    function fillYearRange(id, start, end) {
+      const el = document.getElementById(id);
+      for (let y = end; y >= start; y--) {
+        const o = document.createElement('option');
+        o.value = y;
+        o.textContent = y;
+        el.appendChild(o);
+      }
     }
-  }
-  fillYearRange('ssc_year', 1985, 2026);
-  fillYearRange('hsc_year', 1990, 2026);
+    fillYearRange('ssc_year', 1985, 2026);
+    fillYearRange('hsc_year', 1990, 2026);
 
-  // === Size chart modal ===
-  const dlgSize = document.getElementById('sizeChart');
-  document.getElementById('openSizeChart').onclick = () => dlgSize.showModal();
-  document.getElementById('closeSizeChart').onclick = () => dlgSize.close();
+    // === Size chart modal ===
+    const dlgSize = document.getElementById('sizeChart');
+    document.getElementById('openSizeChart').onclick = () => dlgSize.showModal();
+    document.getElementById('closeSizeChart').onclick = () => dlgSize.close();
 
-  // === Photo preview ===
-  photoEl?.addEventListener('change', function () {
-    const f = this.files?.[0];
-    if (!f) {
-      photoPreview.classList.add('hidden');
-      photoPreview.src = '';
-      return;
+    // === Photo preview ===
+    photoEl?.addEventListener('change', function () {
+      const f = this.files?.[0];
+      if (!f) {
+        photoPreview.classList.add('hidden');
+        photoPreview.src = '';
+        return;
+      }
+      const ok = ['image/jpeg', 'image/png'];
+      if (!ok.includes(f.type) || f.size > 20 * 1024 * 1024) {
+        toastr.error('Invalid image.');
+        this.value = '';
+        photoPreview.classList.add('hidden');
+        return;
+      }
+      photoPreview.src = URL.createObjectURL(f);
+      photoPreview.classList.remove('hidden');
+    });
+
+    // === Validate phone ===
+    function validatePhone() {
+      const phoneInput = $('#phone').val().trim();
+
+      // ✅ Allow only exactly 10 digits starting with "1"
+      if (!/^1\d{9}$/.test(phoneInput)) {
+        toastr.error('Phone number must be exactly 10 digits and start with 1.');
+        return false;
+      }
+
+      return true;
     }
-    const ok = ['image/jpeg', 'image/png'];
-    if (!ok.includes(f.type) || f.size > 20 * 1024 * 1024) {
-      toastr.error('Invalid image.');
-      this.value = '';
-      photoPreview.classList.add('hidden');
-      return;
-    }
-    photoPreview.src = URL.createObjectURL(f);
-    photoPreview.classList.remove('hidden');
-  });
 
-  // === Validate phone ===
-function validatePhone() {
-  const phoneInput = $('#phone').val().trim();
-
-  // ✅ Allow only exactly 10 digits starting with "1"
-  if (!/^1\d{9}$/.test(phoneInput)) {
-    toastr.error('Phone number must be exactly 10 digits and start with 1.');
-    return false;
-  }
-
+    // === Helpers ===
+function validateGuests() {
+  const total = parseInt($('#guests_total').val() || '0', 10);
+  if (total < 0) { toastr.error('Guest numbers cannot be negative.'); return false; }
   return true;
 }
 
-  // === Helpers ===
-  function validateGuests() {
-    const total = parseInt($('#guests_total').val() || '0', 10),
-      adults = parseInt($('#guest_above_12').val() || '0', 10);
-    if (adults > total) { toastr.error('Guests aged 12+ cannot exceed total guests.'); return false; }
-    if (total < 0 || adults < 0) { toastr.error('Guest numbers cannot be negative.'); return false; }
-    return true;
-  }
 
-  function composeBatch() {
-    const ssc = $('#ssc_year').val(), hsc = $('#hsc_year').val(), a = [];
-    if (ssc) a.push(`SSC , ${ssc}`);
-    if (hsc) a.push(`HSC , ${hsc}`);
-    return a.join(', ');
-  }
+    function composeBatch() {
+      const ssc = $('#ssc_year').val(), hsc = $('#hsc_year').val(), a = [];
+      if (ssc) a.push(`SSC , ${ssc}`);
+      if (hsc) a.push(`HSC , ${hsc}`);
+      return a.join(', ');
+    }
 
-  function getPrimaryYear() {
-    const s = $('#ssc_year').val(), h = $('#hsc_year').val();
-    return s ? parseInt(s, 10) : h ? parseInt(h, 10) : null;
-  }
+    function getPrimaryYear() {
+      const s = $('#ssc_year').val(), h = $('#hsc_year').val();
+      return s ? parseInt(s, 10) : h ? parseInt(h, 10) : null;
+    }
 
-  function getBaseFee(y) {
-    if (!y) return 0;
-    if (y >= 1985 && y <= 2015) return 1500;
-    if (y >= 2016 && y <= 2026) return 1000;
-    return 0;
-  }
+    function getBaseFee(y) {
+      if (!y) return 0;
+      if (y >= 1985 && y <= 2015) return 1500;
+      if (y >= 2016 && y <= 2026) return 1000;
+      return 0;
+    }
 
-  function computePayable() {
-    const y = getPrimaryYear(),
-      baseLocal = getBaseFee(y),
-      ab = document.getElementById('live_abroad_yes')?.checked;
-    const base = ab ? 5000 : baseLocal,
-      g12 = parseInt($('#guest_above_12').val() || '0', 10),
-      gFee = (isFinite(g12) ? g12 : 0) * 1000;
-    return { base, guestsFee: gFee, total: base + gFee };
-  }
+function computePayable() {
+  const y = getPrimaryYear();
+  const baseLocal = getBaseFee(y);
+  const ab = document.getElementById('live_abroad_yes')?.checked;
+  const guests = parseInt($('#guests_total').val() || '0', 10);
 
-  // === Unique ID logic ===
-  function genRegistrationId() {
-    const t = new Date(), pad = n => String(n).padStart(2, '0');
-    const stamp = `${t.getFullYear()}${pad(t.getMonth() + 1)}${pad(t.getDate())}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`;
-    const rand = Math.floor(1000 + Math.random() * 9000);
-    return `EUSC-${stamp}-${rand}`;
-  }
+  // বিদেশি হলে 5000, না হলে baseLocal
+  const base = ab ? 5000 : baseLocal;
 
-  function computeBaseUid(name, ssc, hsc, phone) {
-    const year = ssc || hsc;
-    if (!year) return null;
-    const first3 = (name || '').toLowerCase().replace(/[^a-z]/g, '').slice(0, 3);
-    const digits = (phone || '').replace(/\D/g, '');
-    const last4 = digits.slice(-4);
-    if (!first3 || last4.length < 4) return null;
-    return `${year}-${first3}-${last4}`;
-  }
+  // প্রতি অতিথি 1000 টাকা
+  const guestsFee = guests * 1000;
 
-  // === Modal refs ===
-  const sumDlg = document.getElementById('paymentSummary');
-  const sumUidEl = document.getElementById('sumUid');
-  const sumBaseEl = document.getElementById('sumBase');
-  const sumGuestsEl = document.getElementById('sumGuests');
-  const sumTotalEl = document.getElementById('sumTotal');
-  let pendingFormData = null;
+  const total = base + guestsFee;
+  return { base, guestsFee, total };
+}
 
-  // === Submit handler ===
-  form.on('submit', function (e) {
-    e.preventDefault();
 
-    if (!validateGuests()) return;
-    if (!validatePhone()) return;
+    // === Unique ID logic ===
+    function genRegistrationId() {
+      const t = new Date(), pad = n => String(n).padStart(2, '0');
+      const stamp = `${t.getFullYear()}${pad(t.getMonth() + 1)}${pad(t.getDate())}-${pad(t.getHours())}${pad(t.getMinutes())}${pad(t.getSeconds())}`;
+      const rand = Math.floor(1000 + Math.random() * 9000);
+      return `EUSC-${stamp}-${rand}`;
+    }
 
-    const year = getPrimaryYear();
-    if (!year) { toastr.error('Select SSC or HSC year.'); return; }
+    function computeBaseUid(name, ssc, hsc, phone) {
+      const year = ssc || hsc;
+      if (!year) return null;
+      const first3 = (name || '').toLowerCase().replace(/[^a-z]/g, '').slice(0, 3);
+      const digits = (phone || '').replace(/\D/g, '');
+      const last4 = digits.slice(-4);
+      if (!first3 || last4.length < 4) return null;
+      return `${year}-${first3}-${last4}`;
+    }
 
-    const { base, guestsFee, total } = computePayable();
-    if (base === 0) { toastr.error('Selected year invalid.'); return; }
+    // === Modal refs ===
+    const sumDlg = document.getElementById('paymentSummary');
+    const sumUidEl = document.getElementById('sumUid');
+    const sumBaseEl = document.getElementById('sumBase');
+    const sumGuestsEl = document.getElementById('sumGuests');
+    const sumTotalEl = document.getElementById('sumTotal');
+    let pendingFormData = null;
 
-    const regId = genRegistrationId();
-    const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
+    // === Submit handler ===
+    form.on('submit', function (e) {
+      e.preventDefault();
 
-    // ✅ Phone stored as "01871752332"
-    let phoneVal = $('#phone').val().trim();
-    phoneVal = phoneVal.replace(/\D/g, ''); // only digits
-    $('#phone').val(phoneVal);
+      if (!validateGuests()) return;
+      if (!validatePhone()) return;
 
-    // ✅ Hidden backend-use-only phone for SMS: "8801871752332"
-    const smsPhone = '880' + phoneVal.substring(1);
+      const year = getPrimaryYear();
+      if (!year) { toastr.error('Select SSC or HSC year.'); return; }
 
-    $('#client_reg_id').val(baseUid || regId);
-    $('#payable_amount').val(total);
-    $('#batch').val(composeBatch());
+      const { base, guestsFee, total } = computePayable();
+      if (base === 0) { toastr.error('Selected year invalid.'); return; }
 
-    sumUidEl.textContent = baseUid || regId;
-    sumBaseEl.textContent = base;
-    sumGuestsEl.textContent = guestsFee;
-    sumTotalEl.textContent = total;
+      const regId = genRegistrationId();
+      const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
 
-    // === Prepare FormData ===
-    const fd = new FormData(form[0]);
-    if (baseUid) fd.append('client_reg_id', baseUid);
+      // ✅ Phone stored as "01871752332"
+      let phoneVal = $('#phone').val().trim();
+      phoneVal = phoneVal.replace(/\D/g, ''); // only digits
+      $('#phone').val(phoneVal);
 
-    const contribYes = document.getElementById('eusCAA_contribution_yes')?.checked;
-    const contribNo = document.getElementById('eusCAA_contribution_no')?.checked;
-    let contribValue = '';
-    if (contribYes) contribValue = 'yes';
-    else if (contribNo) contribValue = 'no';
-    fd.set('eusCAA_contribution', contribValue);
+      // ✅ Hidden backend-use-only phone for SMS: "8801871752332"
+      const smsPhone = '880' + phoneVal.substring(1);
 
-    // ✅ Attach SMS-formatted number for backend jobs (optional)
-    fd.append('sms_phone', smsPhone);
+      $('#client_reg_id').val(baseUid || regId);
+      $('#payable_amount').val(total);
+      $('#batch').val(composeBatch());
 
-    pendingFormData = fd;
-    sumDlg.showModal();
-  });
+      sumUidEl.textContent = baseUid || regId;
+      sumBaseEl.textContent = base;
+      sumGuestsEl.textContent = guestsFee;
+      sumTotalEl.textContent = total;
 
-  document.getElementById('cancelSummary').onclick = () => sumDlg.close();
+      // === Prepare FormData ===
+      const fd = new FormData(form[0]);
+      if (baseUid) fd.append('client_reg_id', baseUid);
 
-  confirmBtn.onclick = () => {
-    if (!pendingFormData) { sumDlg.close(); return; }
-    confirmBtn.disabled = true;
-    btnSpinner.classList.remove('hidden');
-    btnText.textContent = 'Submitting...';
-    submitBtn.prop('disabled', true).text('Submitting,');
-    saving.removeClass('hidden');
+      const contribYes = document.getElementById('eusCAA_contribution_yes')?.checked;
+      const contribNo = document.getElementById('eusCAA_contribution_no')?.checked;
+      let contribValue = '';
+      if (contribYes) contribValue = 'yes';
+      else if (contribNo) contribValue = 'no';
+      fd.set('eusCAA_contribution', contribValue);
 
-    $.ajax({
-      url: "{{ route('registrations.store') }}",
-      method: "POST",
-      data: pendingFormData,
-      contentType: false,
-      processData: false
-    })
-      .done(resp => {
-        if (resp?.success) {
-          toastr.success(resp.message || 'Registration saved!');
-          form.trigger('reset');
-          photoPreview.classList.add('hidden');
-          photoPreview.src = '';
-        } else if (resp?.message) {
-          toastr.info(resp.message);
-        } else {
-          toastr.info('Request completed.');
-        }
+      // ✅ Attach SMS-formatted number for backend jobs (optional)
+      fd.append('sms_phone', smsPhone);
+
+      pendingFormData = fd;
+      sumDlg.showModal();
+    });
+
+    document.getElementById('cancelSummary').onclick = () => sumDlg.close();
+
+    confirmBtn.onclick = () => {
+      if (!pendingFormData) { sumDlg.close(); return; }
+      confirmBtn.disabled = true;
+      btnSpinner.classList.remove('hidden');
+      btnText.textContent = 'Submitting...';
+      submitBtn.prop('disabled', true).text('Submitting,');
+      saving.removeClass('hidden');
+
+      $.ajax({
+        url: "{{ route('registrations.store') }}",
+        method: "POST",
+        data: pendingFormData,
+        contentType: false,
+        processData: false
       })
-      .fail(xhr => {
-        console.error('AJAX error', xhr.status, xhr.responseText);
-        if (xhr.status === 403) toastr.error('Forbidden – check CSRF token or permissions.');
-        else if (xhr.status === 419) toastr.error('Session expired – refresh and try again.');
-        else toastr.error('Something went wrong.');
-      })
-      .always(() => {
-        submitBtn.prop('disabled', false).text('Submit Registration');
-        saving.addClass('hidden');
-        confirmBtn.disabled = false;
-        btnSpinner.classList.add('hidden');
-        btnText.textContent = 'Confirm & Submit';
-        sumDlg.close();
-        pendingFormData = null;
-      });
-  };
+        .done(resp => {
+          if (resp?.success) {
+            toastr.success(resp.message || 'Registration saved!');
+            form.trigger('reset');
+            photoPreview.classList.add('hidden');
+            photoPreview.src = '';
+          } else if (resp?.message) {
+            toastr.info(resp.message);
+          } else {
+            toastr.info('Request completed.');
+          }
+        })
+        .fail(xhr => {
+          console.error('AJAX error', xhr.status, xhr.responseText);
+          if (xhr.status === 403) toastr.error('Forbidden – check CSRF token or permissions.');
+          else if (xhr.status === 419) toastr.error('Session expired – refresh and try again.');
+          else toastr.error('Something went wrong.');
+        })
+        .always(() => {
+          submitBtn.prop('disabled', false).text('Submit Registration');
+          saving.addClass('hidden');
+          confirmBtn.disabled = false;
+          btnSpinner.classList.add('hidden');
+          btnText.textContent = 'Confirm & Submit';
+          sumDlg.close();
+          pendingFormData = null;
+        });
+    };
 
-  document.getElementById('resetBtn').onclick = () => {
-    photoPreview.classList.add('hidden');
-    photoPreview.src = '';
-    sumUidEl.textContent = ',';
-  };
-</script>
+    document.getElementById('resetBtn').onclick = () => {
+      photoPreview.classList.add('hidden');
+      photoPreview.src = '';
+      sumUidEl.textContent = ',';
+    };
+  </script>
 
 
 </body>

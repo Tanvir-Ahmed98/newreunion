@@ -17,13 +17,12 @@ class RegistrationController extends Controller
         $validated = $request->validate([
             'name'               => 'required|string|max:255',
             'email'              => 'required|email|max:255',
-            // 🔽 ফোন অবশ্যই 1 দিয়ে শুরু হবে এবং মোট 10 ডিজিট হবে
             'phone'              => ['required', 'regex:/^1\d{9}$/'],
             'location'           => 'required|string|max:255',
             'profession'         => 'nullable|string|max:255',
             'blood_group'        => 'nullable|string|max:5',
             'guests_total'       => 'nullable|integer|min:0',
-            'guest_above_12'     => 'required|integer|min:0',
+            'guest_above_12'     => 'nullable|integer|min:0',
             'tshirt_size'        => 'nullable|in:S,M,L,XL,XXL',
             'client_reg_id'      => 'required|string|max:50',
             'batch'              => 'nullable|string|max:100',

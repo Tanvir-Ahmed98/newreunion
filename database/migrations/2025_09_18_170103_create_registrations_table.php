@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('payable_amount')->nullable();
             // Guest counts
             $table->unsignedTinyInteger('guests_total')->default(0); // 0..5 (5 means 5+)
-            $table->unsignedTinyInteger('guest_above_12')->default(0);
+            $table->unsignedTinyInteger('guest_above_12')->nullable();
             $table->enum('eusCAA_contribution', ['yes', 'no'])->nullable()
                   ->comment('Whether the alumnus chose to make a contribution to EUSCAA');
 
