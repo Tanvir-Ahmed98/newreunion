@@ -17,17 +17,24 @@ class SendRegistrationEmailJob implements ShouldQueue
 
     public Registration $registration;
 
+    /**
+     * Create a new job instance.
+     */
     public function __construct(Registration $registration)
     {
-        // Store only the model ID if you prefer lighter payloads:
-        // $this->registrationId = $registration->getKey();
         $this->registration = $registration;
     }
 
+    /**
+     * Execute the job.
+     */
     public function handle(): void
     {
-        // If you stored only ID, re-fetch: $registration = Registration::find($this->registrationId);
+        // ✅ Generate the payment link for this user
+        $paymentLink = url('/payment/' . $this->registration->payment_token);
+
+        // ✅ Send the email using the Mailable class
         Mail::to($this->registration->email)
-            ->send(new RegistrationReceipt($this->registration));
+            ->send(new RegistrationReceipt($this->registration, $paymentLink));
     }
 }

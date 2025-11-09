@@ -15,13 +15,15 @@ class SendRegistrationSmsJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     protected $registration;
+    protected $paymentLink;
 
     /**
      * Create a new job instance.
      */
-    public function __construct(Registration $registration)
+    public function __construct(Registration $registration, string $paymentLink)
     {
         $this->registration = $registration;
+        $this->paymentLink = $paymentLink;
     }
 
     /**
@@ -30,24 +32,26 @@ class SendRegistrationSmsJob implements ShouldQueue
     public function handle(): void
     {
         try {
-            $phone = $this->registration->phone;
-            $name  = $this->registration->name;
-            $refId = $this->registration->client_reg_id ?? 'N/A';
-            $amount = $this->registration->payable_amount ?? '0';
+            $phone   = $this->registration->phone;
+            $name    = $this->registration->name;
+            $refId   = $this->registration->client_reg_id ?? 'N/A';
+            $amount  = number_format((float) $this->registration->payable_amount, 2);
+            $link    = $this->paymentLink;
 
-            // ✅ Build dynamic SMS message
-            $message = "Dear {$name}, your registration for EUSCIANS Reunion 2026 is successful!\n\n"
-                     . "Please pay {$amount} BDT via bKash (Personal Account: +8801819129519 – Syed Ishtiaq Ahmad) "
-                     . "using reference ID: {$refId} to confirm your registration.\n\n"
-                     . "Helpline: 01734442666\nEUSCAA Organizing Committee";
+            // ✅ Fixed Template with dynamic data
+            $message = "Dear {$name} Your EUSCIANS Reunion 2026 form is submitted.\n"
+                     . "Please pay {$amount} via bKash (Merchant Account): +8801879996066 (EUSCAA) using \n"
+                     . "Ref ID: {$refId} within 48 hrs to confirm.\n"
+                     . "Unpaid forms will be cancelled.\n"
+                     . "Use this link to send us your transaction ID to confirm.\n"
+                     . "{$link}\n"
+                     . "Helpline: 01410969009 (whatsapp)";
 
-            // ✅ Using sms_net_bd\SMS
+            // ✅ Send SMS via sms_net_bd\SMS
             $sms = new SMS();
-
-            // ✅ Send SMS (order: message, recipient)
             $sms->sendSMS($message, $phone);
 
-            \Log::info("✅ SMS sent successfully to {$phone}");
+            \Log::info("✅ Registration SMS sent successfully to {$phone}");
 
         } catch (\Throwable $e) {
             \Log::error("❌ SMS sending failed for {$this->registration->phone}: {$e->getMessage()}");

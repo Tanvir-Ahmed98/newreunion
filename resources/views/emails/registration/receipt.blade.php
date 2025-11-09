@@ -4,11 +4,13 @@
 @endphp
 
 @component('mail::message')
-# Thank you, {{ $registration->name }} 🎉
+# 🎓 Thank you, {{ $registration->name }}!
 
-We’ve received your registration for the **EUSCAA Reunion**.
+We’ve received your registration for the **EUSCIANS Reunion 2026**.
 
-## Registration Details
+---
+
+## 🪪 Registration Details
 - **Registration ID:** {{ $regId }}
 - **Email:** {{ $registration->email }}
 - **Phone:** {{ $registration->phone }}
@@ -18,14 +20,30 @@ We’ve received your registration for the **EUSCAA Reunion**.
 - **Guests (Total):** {{ (int) $registration->guests_total }}
 - **T-shirt Size:** {{ $registration->tshirt_size ?? 'N/A' }}
 
-## Payment
+---
+
+## 💰 Payment Instructions
 - **Payable Amount:** **৳ {{ $amount }}**
+- **Payment Method:** bKash (Merchant Account): **+8801879996066 (EUSCAA)**
+- **Reference ID:** **{{ $regId }}**
+- Please pay within **48 hours** to confirm your registration.  
+- Unpaid forms will be **automatically cancelled**.
+
+---
+
+@component('mail::button', ['url' => $paymentLink, 'color' => 'success'])
+🔗 Confirm Payment & Submit Transaction ID
+@endcomponent
+
+---
 
 @component('mail::panel')
 Keep your Registration ID handy for any queries.  
-If you uploaded a photo, our team will review it shortly.
+If you uploaded a photo, our team will review it shortly.  
+**Helpline:** 01410969009 (WhatsApp)
 @endcomponent
 
 Thanks,  
 **EUSCAA Reunion Team**
+
 @endcomponent

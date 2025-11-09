@@ -13,34 +13,42 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-             $table->string('client_reg_id', 120)->nullable();
+
+            // 🔑 Core identifiers
+            $table->string('client_reg_id', 120)->nullable();
             $table->string('name', 120);
             $table->string('email');
             $table->string('phone', 30)->nullable();
 
-            // Reunion-specific fields
+            // 🎓 Reunion-specific info
             $table->string('batch')->nullable(); // e.g. "SSC – 1985, HSC – 1990"
             $table->string('location')->nullable();
             $table->string('profession')->nullable();
-             $table->string('blood_group', 5)->nullable();
-            $table->string('payable_amount')->nullable();
-            // Guest counts
-            $table->unsignedTinyInteger('guests_total')->default(0); // 0..5 (5 means 5+)
+            $table->string('blood_group', 5)->nullable();
+            $table->unsignedTinyInteger('guests_total')->default(0);
             $table->unsignedTinyInteger('guest_above_12')->nullable();
+
             $table->enum('eusCAA_contribution', ['yes', 'no'])->nullable()
                   ->comment('Whether the alumnus chose to make a contribution to EUSCAA');
 
-            // Other info
-            $table->enum('tshirt_size', ['S','M','L','XL','XXL'])->nullable();
+            $table->enum('tshirt_size', ['S', 'M', 'L', 'XL', 'XXL', 'XXXL', '4XL'])->nullable();
             $table->unsignedInteger('donation_bdt')->nullable();
 
-            // File upload
+            // 💰 Payment-related fields
+            $table->decimal('payable_amount', 10, 2)->default(0);
+            $table->enum('payment_status', ['unpaid', 'paid'])->default('unpaid');
+            $table->string('transaction_id', 100)->nullable();
+            $table->string('payment_token', 64)->nullable()->unique();
+            $table->timestamp('payment_expires_at')->nullable();
+
+            // 📷 File upload
             $table->string('photo_path')->nullable();
 
-            // Legacy (optional, keep if you want backward compatibility)
-        
-
+            // 🕓 Timestamps
             $table->timestamps();
+
+            // 🗑️ Soft Deletes
+            $table->softDeletes(); // <-- এই লাইন যোগ করা হলো ✅
         });
     }
 
