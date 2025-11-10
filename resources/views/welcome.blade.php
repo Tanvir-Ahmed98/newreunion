@@ -84,7 +84,7 @@
                   </ul>
 
                   <div class="text-red-600 text-sm mt-3">
-                    If you have any questions, feel free to contact <a href="mailto:euscians@gmail.com"
+                    If you have any questions, feel free to contact 01410969009 (whatsapp) or <a href="mailto:euscians@gmail.com"
                       class="underline text-blue-600">euscians@gmail.com</a>
                   </div>
                 </div>

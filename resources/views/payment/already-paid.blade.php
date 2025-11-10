@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Payment Already Confirmed</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script> <!-- Toastr -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 <body class="bg-slate-100 text-slate-800 flex items-center justify-center min-h-screen">
 
