@@ -147,14 +147,14 @@
                 </div>
                 <div class="text-slate-500 text-sm mt-1">Write without +880 (e.g., 1XXXXXXXXX)</div>
               </div>
-              <div> 
+    
+            </div>
+               <div  class="grid md:grid-cols-2 gap-4">
                 <label for="email" class="block font-bold mb-1">Email Address <span
                     class="text-slate-500 font-semibold">(required)</span></label> 
                 <input type="email" id="email" name="email" required inputmode="email"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
               </div>
-            </div>
-            
             <!-- Foreign phone number input -->
             <div id="foreign_phone_container" class="grid md:grid-cols-2 gap-4">
               <div>

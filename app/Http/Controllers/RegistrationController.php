@@ -108,7 +108,7 @@ class RegistrationController extends Controller
 
             return response()->json([
                 'success' => true,
-                'message' => 'Registration successful! Payment link sent via SMS & Email.',
+                'message' => 'Registration successful!',
                 'payment_link' => $paymentLink,
             ]);
 
