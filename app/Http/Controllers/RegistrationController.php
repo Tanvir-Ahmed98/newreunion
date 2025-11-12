@@ -22,7 +22,8 @@ class RegistrationController extends Controller
             $validated = $request->validate([
                 'name'               => 'required|string|max:255',
                 'email'              => 'required|email|max:255',
-                'phone'              => ['required', 'regex:/^1\d{9}$/'],
+                'phone'              => 'required',
+                'live_abroad'        => 'required|in:yes,no', // ✅ নতুন validation যোগ করা হয়েছে
                 'location'           => 'required|string|max:255',
                 'profession'         => 'nullable|string|max:255',
                 'blood_group'        => 'nullable|string|max:5',
@@ -65,6 +66,7 @@ class RegistrationController extends Controller
                 'name'               => $validated['name'],
                 'email'              => $validated['email'],
                 'phone'              => $validated['phone'],
+                'live_abroad'        => $validated['live_abroad'], // ✅ নতুন ফিল্ড যোগ করা হয়েছে
                 'location'           => $validated['location'],
                 'profession'         => $validated['profession'] ?? null,
                 'blood_group'        => $validated['blood_group'] ?? null,

@@ -16,6 +16,7 @@ class Registration extends Model
         'profession',
         'blood_group',
         'batch',
+         'live_abroad',
         'guests_total',
         'guest_above_12',
         'tshirt_size',

@@ -30,6 +30,11 @@
     .input-wrapper input {
       padding-left: 65px !important;
     }
+    
+    /* Hide/show foreign phone input */
+    #foreign_phone_container {
+      display: none;
+    }
   </style>
 </head>
 
@@ -116,31 +121,8 @@
                   <option value="">-- Select --</option>
                 </select> </div>
             </div>
-            <div class="grid md:grid-cols-2 gap-4">
-              <div>
-                <label for="phone" class="block font-bold mb-1">
-                  Phone Number <span class="text-slate-500 font-semibold">(required)</span>
-                </label>
-                <div class="input-wrapper">
-                  <span class="prefix">+880</span>
-                  <input type="tel" id="phone" name="phone" required placeholder="1XXXXXXXX" inputmode="tel"
-                    class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
-                </div>
-                <div class="text-slate-500 text-sm mt-1">Write without +880 (e.g., 1XXXXXXXXX)</div>
-              </div>
-              <div> <label for="email" class="block font-bold mb-1">Email Address <span
-                    class="text-slate-500 font-semibold">(required)</span></label> <input type="email" id="email"
-                  name="email" required inputmode="email"
-                  class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
-              </div>
-            </div>
-            <div class="grid grid-cols-1 gap-4">
-              <div> <label for="location" class="block font-bold mb-1">Current / Permanent Location <span
-                    class="text-slate-500 font-semibold">(required)</span></label> <input type="text" id="location"
-                  name="location" required placeholder="e.g., Dhaka , Bangladesh, New York , USA"
-                  class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
-              </div>
-            </div>
+            
+            <!-- Phone number section - updated for foreign numbers -->
             <div class="grid grid-cols-1 gap-4">
               <div> <label class="block font-bold mb-1">Do you live abroad? <span
                     class="text-slate-500 font-semibold">(required)</span></label>
@@ -149,6 +131,54 @@
                       value="yes" required class="accent-teal-500"> <span>Yes</span> </label> <label
                     class="inline-flex items-center gap-2"> <input type="radio" name="live_abroad" id="live_abroad_no"
                       value="no" class="accent-teal-500"> <span>No</span> </label> </div>
+              </div>
+            </div>
+            
+            <!-- Bangladesh phone number input -->
+            <div id="bd_phone_container" class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label for="phone" class="block font-bold mb-1">
+                  Phone Number (Bangladesh) <span class="text-slate-500 font-semibold">(required)</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="prefix">+880</span>
+                  <input type="tel" id="phone" name="phone" required placeholder="1XXXXXXXX" inputmode="tel"
+                    class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
+                </div>
+                <div class="text-slate-500 text-sm mt-1">Write without +880 (e.g., 1XXXXXXXXX)</div>
+              </div>
+              <div> 
+                <label for="email" class="block font-bold mb-1">Email Address <span
+                    class="text-slate-500 font-semibold">(required)</span></label> 
+                <input type="email" id="email" name="email" required inputmode="email"
+                  class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
+              </div>
+            </div>
+            
+            <!-- Foreign phone number input -->
+            <div id="foreign_phone_container" class="grid md:grid-cols-2 gap-4">
+              <div>
+                <label for="foreign_phone" class="block font-bold mb-1">
+                  Phone Number (Foreign) <span class="text-slate-500 font-semibold">(required)</span>
+                </label>
+                <div class="input-wrapper">
+                  <span class="prefix">+</span>
+                  <input type="tel" id="foreign_phone" name="phone" placeholder="Country code and number" inputmode="tel"
+                    class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
+                </div>
+                <div class="text-slate-500 text-sm mt-1">Include country code (e.g., 1XXXXXXXXXX for USA/Canada)</div>
+              </div>
+              <div>
+                <!-- Empty div to maintain grid layout -->
+                <div class="h-full"></div>
+              </div>
+            </div>
+            
+            <div class="grid grid-cols-1 gap-4">
+              <div> <label for="location" class="block font-bold mb-1">Current / Permanent Location <span
+                    class="text-slate-500 font-semibold">(required)</span></label> <input type="text" id="location"
+                  name="location" required placeholder="e.g., Dhaka , Bangladesh, New York , USA"
+                  class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400" />
               </div>
             </div>
             <div class="grid grid-cols-1 gap-4">
@@ -338,7 +368,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
-  <script>
+<script>
     toastr.options = { closeButton: true, progressBar: true, newestOnTop: true, positionClass: "toast-top-right", timeOut: 3000 };
     $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content } });
 
@@ -383,26 +413,77 @@
       photoPreview.classList.remove('hidden');
     });
 
+    // === Handle live abroad radio buttons ===
+    function handleLiveAbroadChange() {
+      const isAbroad = document.getElementById('live_abroad_yes').checked;
+      const bdPhoneContainer = document.getElementById('bd_phone_container');
+      const foreignPhoneContainer = document.getElementById('foreign_phone_container');
+      const bdPhoneInput = document.getElementById('phone');
+      const foreignPhoneInput = document.getElementById('foreign_phone');
+      
+      if (isAbroad) {
+        // Show foreign phone, hide BD phone
+        bdPhoneContainer.style.display = 'none';
+        foreignPhoneContainer.style.display = 'grid';
+        bdPhoneInput.removeAttribute('required');
+        bdPhoneInput.disabled = true; // ✅ Disable the hidden field
+        foreignPhoneInput.setAttribute('required', 'required');
+        foreignPhoneInput.disabled = false; // ✅ Enable the visible field
+      } else {
+        // Show BD phone, hide foreign phone
+        bdPhoneContainer.style.display = 'grid';
+        foreignPhoneContainer.style.display = 'none';
+        bdPhoneInput.setAttribute('required', 'required');
+        bdPhoneInput.disabled = false; // ✅ Enable the visible field
+        foreignPhoneInput.removeAttribute('required');
+        foreignPhoneInput.disabled = true; // ✅ Disable the hidden field
+      }
+    }
+
+    // Add event listeners to live abroad radio buttons
+    document.getElementById('live_abroad_yes').addEventListener('change', handleLiveAbroadChange);
+    document.getElementById('live_abroad_no').addEventListener('change', handleLiveAbroadChange);
+
+    // Initialize phone display based on default selection
+    handleLiveAbroadChange();
+
     // === Validate phone ===
     function validatePhone() {
-      const phoneInput = $('#phone').val().trim();
+      const isAbroad = document.getElementById('live_abroad_yes').checked;
+      
+      if (isAbroad) {
+        // Validate foreign phone
+        const foreignPhoneInput = document.getElementById('foreign_phone').value.trim();
+        if (!foreignPhoneInput) {
+          toastr.error('Foreign phone number is required.');
+          return false;
+        }
+        
+        // Basic validation for foreign phone - at least 5 digits
+        if (!/^\d{5,}$/.test(foreignPhoneInput.replace(/\D/g, ''))) {
+          toastr.error('Please enter a valid foreign phone number.');
+          return false;
+        }
+      } else {
+        // Validate Bangladesh phone
+        const phoneInput = $('#phone').val().trim();
 
-      // ✅ Allow only exactly 10 digits starting with "1"
-      if (!/^1\d{9}$/.test(phoneInput)) {
-        toastr.error('Phone number must be exactly 10 digits and start with 1.');
-        return false;
+        // ✅ Allow only exactly 10 digits starting with "1"
+        if (!/^1\d{9}$/.test(phoneInput)) {
+          toastr.error('Phone number must be exactly 10 digits and start with 1.');
+          return false;
+        }
       }
 
       return true;
     }
 
     // === Helpers ===
-function validateGuests() {
-  const total = parseInt($('#guests_total').val() || '0', 10);
-  if (total < 0) { toastr.error('Guest numbers cannot be negative.'); return false; }
-  return true;
-}
-
+    function validateGuests() {
+      const total = parseInt($('#guests_total').val() || '0', 10);
+      if (total < 0) { toastr.error('Guest numbers cannot be negative.'); return false; }
+      return true;
+    }
 
     function composeBatch() {
       const ssc = $('#ssc_year').val(), hsc = $('#hsc_year').val(), a = [];
@@ -423,22 +504,21 @@ function validateGuests() {
       return 0;
     }
 
-function computePayable() {
-  const y = getPrimaryYear();
-  const baseLocal = getBaseFee(y);
-  const ab = document.getElementById('live_abroad_yes')?.checked;
-  const guests = parseInt($('#guests_total').val() || '0', 10);
+    function computePayable() {
+      const y = getPrimaryYear();
+      const baseLocal = getBaseFee(y);
+      const ab = document.getElementById('live_abroad_yes')?.checked;
+      const guests = parseInt($('#guests_total').val() || '0', 10);
 
-  // বিদেশি হলে 5000, না হলে baseLocal
-  const base = ab ? 5000 : baseLocal;
+      // বিদেশি হলে 5000, না হলে baseLocal
+      const base = ab ? 5000 : baseLocal;
 
-  // প্রতি অতিথি 1000 টাকা
-  const guestsFee = guests * 1000;
+      // প্রতি অতিথি 1000 টাকা
+      const guestsFee = guests * 1000;
 
-  const total = base + guestsFee;
-  return { base, guestsFee, total };
-}
-
+      const total = base + guestsFee;
+      return { base, guestsFee, total };
+    }
 
     // === Unique ID logic ===
     function genRegistrationId() {
@@ -480,15 +560,32 @@ function computePayable() {
       if (base === 0) { toastr.error('Selected year invalid.'); return; }
 
       const regId = genRegistrationId();
-      const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), $('#phone').val());
+      const isAbroad = document.getElementById('live_abroad_yes').checked;
+      
+      // Get appropriate phone number for base UID
+      let phoneForUid;
+      if (isAbroad) {
+        phoneForUid = document.getElementById('foreign_phone').value;
+      } else {
+        phoneForUid = $('#phone').val().trim();
+      }
+      
+      const baseUid = computeBaseUid($('#name').val(), $('#ssc_year').val(), $('#hsc_year').val(), phoneForUid);
 
-      // ✅ Phone stored as "01871752332"
-      let phoneVal = $('#phone').val().trim();
-      phoneVal = phoneVal.replace(/\D/g, ''); // only digits
-      $('#phone').val(phoneVal);
-
-      // ✅ Hidden backend-use-only phone for SMS: "8801871752332"
-      const smsPhone = '880' + phoneVal.substring(1);
+      // Process phone numbers for submission
+      let phoneVal, smsPhone;
+      
+      if (isAbroad) {
+        // For foreign numbers, store as-is with country code
+        phoneVal = document.getElementById('foreign_phone').value.trim();
+        smsPhone = phoneVal.replace(/\D/g, ''); // Remove non-digits for SMS
+      } else {
+        // For BD numbers, store as "01871752332"
+        phoneVal = $('#phone').val().trim();
+        phoneVal = phoneVal.replace(/\D/g, ''); // only digits
+        // For SMS: "8801871752332"
+        smsPhone = '880' + phoneVal.substring(1);
+      }
 
       $('#client_reg_id').val(baseUid || regId);
       $('#payable_amount').val(total);
@@ -501,6 +598,14 @@ function computePayable() {
 
       // === Prepare FormData ===
       const fd = new FormData(form[0]);
+      
+      // ✅ Ensure we're using the correct phone value
+      if (isAbroad) {
+        fd.set('phone', document.getElementById('foreign_phone').value.trim());
+      } else {
+        fd.set('phone', $('#phone').val().trim().replace(/\D/g, ''));
+      }
+      
       if (baseUid) fd.append('client_reg_id', baseUid);
 
       const contribYes = document.getElementById('eusCAA_contribution_yes')?.checked;
@@ -540,6 +645,8 @@ function computePayable() {
             form.trigger('reset');
             photoPreview.classList.add('hidden');
             photoPreview.src = '';
+            // Reset phone display
+            handleLiveAbroadChange();
           } else if (resp?.message) {
             toastr.info(resp.message);
           } else {
@@ -567,10 +674,9 @@ function computePayable() {
       photoPreview.classList.add('hidden');
       photoPreview.src = '';
       sumUidEl.textContent = ',';
+      // Reset phone display
+      handleLiveAbroadChange();
     };
   </script>
-
-
 </body>
-
 </html>

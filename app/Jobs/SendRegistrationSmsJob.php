@@ -38,14 +38,15 @@ class SendRegistrationSmsJob implements ShouldQueue
             $amount  = number_format((float) $this->registration->payable_amount, 2);
             $link    = $this->paymentLink;
 
-            // ✅ Fixed Template with dynamic data
-            $message = "Dear {$name} Your EUSCIANS Reunion 2026 form is submitted.\n"
-                     . "Please pay {$amount} via bKash (Merchant Account): +8801879996066 (EUSCAA) using \n"
-                     . "Ref ID: {$refId} within 48 hrs to confirm.\n"
-                     . "Unpaid forms will be cancelled.\n"
-                     . "Use this link to send us your transaction ID to confirm.\n"
-                     . "{$link}\n"
-                     . "Helpline: 01410969009 (whatsapp)";
+            // ✅ Updated Template with new format
+            $message = "Dear {$name},\n"
+                     . "Your EUSCIANS Reunion 2026 form has been submitted successfully. Please complete your payment of {$amount} BDT via bKash (Merchant Account): +8801879996066 (EUSCAA).\n"
+                     . "Use the Reference ID: {$refId} and make the payment within 48 hours to confirm your registration.\n"
+                     . "Unpaid forms will be automatically cancelled.\n\n"
+                     . "Use this link to send us your transaction ID to confirm payment.\n"
+                     . "{$link}\n\n"
+                     . "Helpline: 01410969009\n"
+                     . "Email: euscians@gmail.com";
 
             // ✅ Send SMS via sms_net_bd\SMS
             $sms = new SMS();

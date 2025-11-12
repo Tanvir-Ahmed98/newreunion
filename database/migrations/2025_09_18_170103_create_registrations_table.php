@@ -33,7 +33,8 @@ return new class extends Migration
 
             $table->enum('tshirt_size', ['S', 'M', 'L', 'XL', 'XXL', 'XXXL', '4XL'])->nullable();
             $table->unsignedInteger('donation_bdt')->nullable();
-
+  $table->enum('live_abroad', ['yes', 'no'])->nullable()
+                  ->comment('Whether the alumnus lives abroad');
             // 💰 Payment-related fields
             $table->decimal('payable_amount', 10, 2)->default(0);
             $table->enum('payment_status', ['unpaid', 'paid'])->default('unpaid');
