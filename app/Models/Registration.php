@@ -44,6 +44,7 @@ class Registration extends Model
     /**
      * ✅ Automatically provide public URL for stored photo
      */
+    
     public function getPhotoUrlAttribute(): ?string
     {
         return $this->photo_path
