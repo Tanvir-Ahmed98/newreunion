@@ -386,7 +386,7 @@
         el.appendChild(o);
       }
     }
-    fillYearRange('ssc_year', 1985, 2026);
+    fillYearRange('ssc_year', 1985, 2028);
     fillYearRange('hsc_year', 1990, 2026);
 
     // === Size chart modal ===
