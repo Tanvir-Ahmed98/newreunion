@@ -61,7 +61,7 @@
 
                   <p class="mt-3 font-semibold">💰 Registration Fees:</p>
                   <p>👉 <strong>Alumni (Batch 1985–2015) : </strong> 1500 BDT</p>
-                  <p>👉 <strong>Alumni (Batch 2016–2026) : </strong> 1000 BDT</p>
+                  <p>👉 <strong>Alumni (Batch 2016–2028) : </strong> 1000 BDT</p>
                   <p>👉 <strong>Foreign Alumni : </strong> 5000 BDT (Souvenir will be shipped to you)</p>
                   <p>👉 <strong>Additional Guest : </strong> 1000 BDT</p>
                   <!-- <p>👉<strong> Driver:</strong> 500 BDT</p> -->
@@ -109,13 +109,13 @@
               primary).</p>
             <div class="flex flex-wrap gap-5 mt-1">
               <div class="min-w-[260px] flex-1"> <label for="ssc_year" class="block font-bold mb-1">SSC Year <span
-                    class="text-slate-500 font-semibold">(1985-2026)</span></label> <select id="ssc_year"
+                    class="text-slate-500 font-semibold">(1985-2028)</span></label> <select id="ssc_year"
                   name="ssc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
                 </select> </div>
               <div class="min-w-[260px] flex-1"> <label for="hsc_year" class="block font-bold mb-1">HSC Year <span
-                    class="text-slate-500 font-semibold">(1990-2026)</span></label> <select id="hsc_year"
+                    class="text-slate-500 font-semibold">(1990-2028)</span></label> <select id="hsc_year"
                   name="hsc_year"
                   class="w-full bg-white text-slate-800 border border-slate-300 rounded-xl px-4 py-3 text-base outline-none focus:ring-2 focus:ring-teal-400">
                   <option value="">-- Select --</option>
@@ -387,7 +387,7 @@
       }
     }
     fillYearRange('ssc_year', 1985, 2028);
-    fillYearRange('hsc_year', 1990, 2026);
+    fillYearRange('hsc_year', 1990, 2028);
 
     // === Size chart modal ===
     const dlgSize = document.getElementById('sizeChart');
@@ -500,7 +500,7 @@
     function getBaseFee(y) {
       if (!y) return 0;
       if (y >= 1985 && y <= 2015) return 1500;
-      if (y >= 2016 && y <= 2026) return 1000;
+      if (y >= 2016 && y <= 2028) return 1000;
       return 0;
     }
 
